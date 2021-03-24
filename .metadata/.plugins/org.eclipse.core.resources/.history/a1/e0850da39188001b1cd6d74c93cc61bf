@@ -1,0 +1,5 @@
+package com.howtodoinjava.web;
+
+public class User {
+
+}
