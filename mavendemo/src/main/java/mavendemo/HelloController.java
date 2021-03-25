@@ -1,16 +1,14 @@
 package mavendemo;
 
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HelloController {
 	@RequestMapping("/hello")
-	public String display(HttpServletRequest req, Model m) {
-		String name=req.getParameter("name");
-		String pass=req.getParameter("pass");
+	public String display(@RequestParam("name")String name,@RequestParam("pass")String pass, Model m) {
 		if(pass.equals("admin")) {
 			String message="Hello "+name;
 			m.addAttribute("message",message);
