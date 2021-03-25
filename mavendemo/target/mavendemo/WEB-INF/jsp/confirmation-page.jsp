@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html>
-<body>
-<p>Reservation details</p>
-First Name :${reservation.firstName}<br>
-Last Name :${reservation.lastName}
-</body>
-</html>
+<!DOCTYPE html>  
+<html>  
+<body>  
+<p>Your reservation is confirmed successfully. Please, re-check the details.</p>  
+First Name : ${reservation.firstName} <br>  
+Last Name : ${reservation.lastName}  
+</body>  
+</html>  

@@ -11,5 +11,9 @@
         http://www.springframework.org/schema/mvc  
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">  
     <context:component-scan base-package="mavendemo" />   
-    <mvc:annotation-driven/>   
-</beans>  
+    <mvc:annotation-driven/>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+        <property name="prefix" value="/WEB-INF/jsp/"></property>  
+        <property name="suffix" value=".jsp"></property>          
+     </bean>  
+</beans>     

@@ -1,5 +1,6 @@
-<html>  
+<html>
+<head><title>Reservation Form</title></head>  
 <body>  
-<p>Welcome to Spring MVC Tutorial</p>  
+<a href="reservation/bookingForm">Click here for reservation</a>
 </body>  
 </html>
