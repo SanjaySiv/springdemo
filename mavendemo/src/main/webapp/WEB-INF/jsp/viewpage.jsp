@@ -1,5 +1,5 @@
 <html>
 <body>
-<a href="helloagain">click again</a>
+${message}
 </body>
 </html>
