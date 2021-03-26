@@ -11,6 +11,10 @@
 	<br><br>
 	LastName <form:input path="lastName"/>
 	<br><br>
+	Gender:
+	Male<form:radiobutton path="Gender" value="Male"/>
+	Female<form:radiobutton path="Gender" value="Female"/>
+	<br><br>
 	<input type="submit" value="Submit"/>
 	</form:form>
 </body>
