@@ -5,6 +5,8 @@ public class Reservation {
 	private String lastName;
 	private String Gender;
 	private String[] Food;
+	private String cityFrom;
+	private String cityTo;
 	public Reservation() {
 		
 	}
@@ -31,5 +33,17 @@ public class Reservation {
 	}
 	public void setFood(String[] food) {
 		Food = food;
+	}
+	public String getCityFrom() {
+		return cityFrom;
+	}
+	public void setCityFrom(String cityFrom) {
+		this.cityFrom = cityFrom;
+	}
+	public String getCityTo() {
+		return cityTo;
+	}
+	public void setCityTo(String cityTo) {
+		this.cityTo = cityTo;
 	}
 }
