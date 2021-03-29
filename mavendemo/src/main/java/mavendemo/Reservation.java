@@ -4,9 +4,8 @@ public class Reservation {
 	private String firstName;
 	private String lastName;
 	private String Gender;
-	private String[] Food;
-	private String cityFrom;
-	private String cityTo;
+	private int age;
+	private String state;
 	public Reservation() {
 		
 	}
@@ -28,22 +27,17 @@ public class Reservation {
 	public void setGender(String gender) {
 		Gender = gender;
 	}
-	public String[] getFood() {
-		return Food;
+	public int getAge() {
+		return age;
 	}
-	public void setFood(String[] food) {
-		Food = food;
+	public void setAge(int age) {
+		this.age = age;
 	}
-	public String getCityFrom() {
-		return cityFrom;
+	public String getState() {
+		return state;
 	}
-	public void setCityFrom(String cityFrom) {
-		this.cityFrom = cityFrom;
+	public void setState(String state) {
+		this.state = state;
 	}
-	public String getCityTo() {
-		return cityTo;
-	}
-	public void setCityTo(String cityTo) {
-		this.cityTo = cityTo;
-	}
+	
 }

@@ -15,25 +15,8 @@
 	Male<form:radiobutton path="Gender" value="Male"/>
 	Female<form:radiobutton path="Gender" value="Female"/>
 	<br><br>
-	Meals:
-	Breakfast<form:checkbox path="food" value="Breakfast"/>
-	Lunch<form:checkbox path="food" value="Lunch"/>
-	Dinner<form:checkbox path="food" value="Dinner"/>
-	<br><br>
-	Leaving from : <form:select path="cityFrom">
-		<form:option value="Ghaziabad" label="Ghaziabad"/>
-		<form:option value="Modinagar" label="Modinagar"/>
-		<form:option value="Meerut" label="Meerut"/>
-		<form:option value="Amristar" label="Amristar"/>
-	</form:select>
-	<br><br>
-	Going to : <form:select path="cityTo">
-		<form:option value="Ghaziabad" label="Ghaziabad"/>
-		<form:option value="Modinagar" label="Modinagar"/>
-		<form:option value="Meerut" label="Meerut"/>
-		<form:option value="Amristar" label="Amristar"/>
-	</form:select>
-	<br><br>
+	Age <form:input path="age"/><br><br>
+	State <form:input path="state"/><br><br>
 	<input type="submit" value="Submit"/>
 	</form:form>
 </body>
