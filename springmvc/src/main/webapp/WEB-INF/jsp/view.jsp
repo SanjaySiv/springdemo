@@ -2,6 +2,11 @@
 <%@page isELIgnored="false" %>
 <html>  
 <body>  
-${message}  
+<p>${message}</p><br>
+<form action="count">
+         Enter sentence <br><br>
+         <input type="text" name="sentence"/><br>
+         <input type="submit" value="click"/>
+      </form> 
 </body>  
 </html>
