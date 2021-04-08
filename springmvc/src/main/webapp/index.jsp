@@ -1,21 +1,25 @@
-<html> 
+<!DOCTYPE html>
+<html lang="en" dir="ltr"> 
 <head>
-<meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
 <title>Login form</title>
 <link rel="stylesheet" type="text/css" href="css/index.css">
 </head> 
 <body> 
-<div id="container"> 
-<form action="hello" method="post" id="flogin"> 
-<div class="border-box"> 
-<h2>Login</h2>
-<label for="uname" id="un"> UserName : </label>
-<input type="text" name="name" placeholder="Enter username" id="uname"/> <br> 
-<label for="upass" id="ps"> Password : </label>
-<input type="password" name="pass" placeholder="Enter password" id="upass"/> <br>
-<button type="submit" value="Login" id="submit">Login</button>
-</div>  
+<div class="center"> 
+<h1>Login</h1>
+<form action="hello" method="post"> 
+<div class="txt-field"> 
+<input type="text" name="name" required/>
+<span></span>  
+<label> UserName</label>
+</div> 
+ <div class="txt-field"> 
+<input type="password" name="pass" required/> 
+<span></span>
+<label> Password </label>
+</div>
+<input type="submit" value="Login">
 </form>
 </div>
 </body>  
