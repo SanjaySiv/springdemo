@@ -23,4 +23,15 @@ public class DetailsDao {
 		
 		return d;
 	}
+	public void putDetails(int id,String name,String tech) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/coursedetails","root","sqlroot");
+			Statement st=con.createStatement();
+			st.executeUpdate("insert into details (id,name,tech)values("+id+",'"+name+"','"+tech+"')");
+		}
+		catch(Exception e) {
+			System.out.print(e);
+		}
+	}
 }

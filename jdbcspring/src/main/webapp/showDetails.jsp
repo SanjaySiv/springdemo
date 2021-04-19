@@ -9,9 +9,10 @@
 </head>
 <body>
 
-<%
+<%-- <%
 	Details d=(Details)request.getAttribute("details");
 	out.println(d);
-%>
+%> --%>
+data inserted
 </body>
 </html>
