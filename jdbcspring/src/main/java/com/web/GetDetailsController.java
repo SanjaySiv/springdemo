@@ -37,7 +37,7 @@ public class GetDetailsController extends HttpServlet {
 		String tech=request.getParameter("tech");
 		DetailsDao dao=new DetailsDao();
 		dao.putDetails(id,name,tech);
-		RequestDispatcher rd=request.getRequestDispatcher("showDetails.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("insertNotification.jsp");
 		rd.forward(request, response);
 	}
 
