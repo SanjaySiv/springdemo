@@ -1,13 +1,21 @@
 package com.springmvc;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.springmvc.dao.LoginDao;
+import com.springmvc.model.Login;
 
 @Controller
 public class LoginController {
+	@Autowired 
+	LoginDao dao;
 	@RequestMapping("/hello")  
     public String display(HttpServletRequest req,Model m)  
     {  
@@ -53,5 +61,16 @@ public class LoginController {
 		m.addAttribute("numCount", numCount);
 		m.addAttribute("specialCount", specialCount);
 		return "welcome";
+	}
+	@RequestMapping(value="/save",method = RequestMethod.POST)
+	public String insertUser(HttpServletRequest req) {
+		Login log=new Login();
+		log.setId(Integer.parseInt(req.getParameter("id")));
+		log.setFname(req.getParameter("fname"));
+		log.setLname(req.getParameter("lname"));
+		log.setEmail(req.getParameter("email"));
+		log.setPassword(req.getParameter("pass"));
+		dao.saveUser(log);
+		return "success";
 	}
 }

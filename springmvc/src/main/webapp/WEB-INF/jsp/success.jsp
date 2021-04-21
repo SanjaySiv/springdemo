@@ -3,7 +3,7 @@
     <title>Spring MVC login example.</title>
   </head>
   <body>
-    <h2>${message}</h2><br/>
+    user added<br/>
     <jsp:include page="/index.jsp"></jsp:include>  
   </body>
 </html>

@@ -20,6 +20,9 @@
 <label> Password </label>
 </div>
 <input type="submit" value="Login">
+<div class="signup_link">
+Not a member? <a href="register.jsp">Register</a>
+</div>
 </form>
 </div>
 </body>  
