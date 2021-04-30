@@ -8,9 +8,9 @@
 <body> 
 <div class="center"> 
 <h1>Login</h1>
-<form action="hello" method="post"> 
+<form action="login" method="post"> 
 <div class="txt-field"> 
-<input type="text" name="name" required/>
+<input type="text" name="email" required/>
 <span></span>  
 <label> UserName</label>
 </div> 

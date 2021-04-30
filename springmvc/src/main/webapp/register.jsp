@@ -5,26 +5,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/register.css">
 </head>
 <body>
-
 <div class="center"> 
 <h1>Register</h1>
 <form action="save" method="post"> 
 <div class="txt-field"> 
-<input type="text" name="id" required/> 
+<input type="text" name="name" required/> 
 <span></span>
-<label> Id </label>
+<label> Name </label>
 </div>
 <div class="txt-field"> 
-<input type="text" name="fname" required/>
+<input type="text" name="address" required/>
 <span></span>  
-<label> First Name</label>
+<label> Address </label>
 </div> 
 <div class="txt-field"> 
-<input type="text" name="lname" required/> 
+<input type="text" name="phone" required/> 
 <span></span>
-<label> Last Name </label>
+<label> Phone no </label>
 </div>
 <div class="txt-field"> 
 <input type="text" name="email" required/> 
