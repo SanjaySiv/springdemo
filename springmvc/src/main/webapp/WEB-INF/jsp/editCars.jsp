@@ -9,16 +9,18 @@
 <link rel="stylesheet" type="text/css" href="css/viewCars.css">
 </head>
 <body>
+<a href="cars.jsp">Add Car</a> <br><br>
 <h1>Cars List</h1>  
 <table border="2" width="70%" cellpadding="2">  
-<tr><th>Car Id</th><th>Model</th><th>Seat No.</th><th>Permit</th><th>Edit</th></tr>  
+<tr><th>Car Id</th><th>Model</th><th>Seat No.</th><th>Registration No</th><th>Permit</th><th>Delete</th></tr>  
    <c:forEach var="cars" items="${list}">   
    <tr>  
    <td><c:out value="${cars.carId}"/></td>  
    <td><c:out value="${cars.model}"/></td>  
-   <td><c:out value="${cars.seat}"/></td>  
+   <td><c:out value="${cars.seat}"/></td>
+   <td><c:out value="${cars.regNo}"/></td>
    <td><c:out value="${cars.permit}"/></td>  
-   <td><a href="bookCar/${cars.carId}">Book</a></td>    
+   <td><a href="deleteCar/${cars.carId}">Delete</a></td>    
    </tr>  
    </c:forEach>  
    </table>  

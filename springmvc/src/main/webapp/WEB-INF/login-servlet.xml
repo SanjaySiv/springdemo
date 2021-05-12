@@ -29,11 +29,10 @@
 <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">  
 <property name="dataSource" ref="ds"></property>  
 </bean>  
-  
-<bean id="ldao" class="com.springmvc.dao.CustomerDao">  
+<bean id="cdao" class="com.springmvc.dao.CustomerDao">  
 <property name="jdbcTemplate" ref="jdbcTemplate"></property>  
 </bean> 
-<bean id="cdao" class="com.springmvc.dao.CarsDao">  
+<bean id="adao" class="com.springmvc.dao.AdminDao">  
 <property name="jdbcTemplate" ref="jdbcTemplate"></property>  
 </bean>
 </beans> 

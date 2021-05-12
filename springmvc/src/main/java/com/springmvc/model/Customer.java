@@ -1,11 +1,18 @@
 package com.springmvc.model;
 
 public class Customer {
+	private  int cid;
 	private String name;
 	private String address;
 	private String phone;
 	private String email;
 	private String password;
+	public int getCid() {
+		return cid;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
 	public String getName() {
 		return name;
 	}
