@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +9,10 @@
 </head>
 <body>
 <form action="confirmBooking">
-	Booking Date : <input type="date" name="bookingDate"/>
-	Return Date : <input type="date" name="returnDate"/>
+	Car Id : ${carId} <br>
+	<input hidden="text" name="carId" value="${carId}"/><br>
+	Booking Date : <input type="date" name="bookingDate" required/><br>
+	Return Date : <input type="date" name="returningDate" required/><br>
 	<input type="submit" value="confirm"/>
 </form>
 </body>

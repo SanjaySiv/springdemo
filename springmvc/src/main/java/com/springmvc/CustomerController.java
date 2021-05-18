@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,15 +58,37 @@ public class CustomerController {
 		return "success";
 	}
 	@RequestMapping(value="/bookCar/{carId}",method = RequestMethod.GET)
-	 public String bookCar(@PathVariable String carId,Model m) {   
+	 public String bookCar(@PathVariable int carId,Model m) {   
 		m.addAttribute("carId",carId);
         return "bookCar";    
     }
 	@RequestMapping("/bookCar/confirmBooking")
-	public String confirmBooking(HttpServletRequest req) throws ParseException {
-		SimpleDateFormat formatter1=new SimpleDateFormat("dd-MM-yyyy");
-		String date=req.getParameter("bookingDate");
-		Date d=formatter1.parse(req.getParameter("bookingDate"));
-		return "welcome";
+	public String confirmBooking(HttpServletRequest req,HttpServletResponse res) throws ParseException {
+		String bookingDate=req.getParameter("bookingDate");
+		String returningDate=req.getParameter("returningDate");
+		int carId=Integer.parseInt(req.getParameter("carId"));
+		CarDates carDate=new CarDates();
+		carDate.setCarId(carId);
+		carDate.setBookingDate(bookingDate);
+		carDate.setReturnDate(returningDate);
+		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+		Date bookDate=sdformat.parse(bookingDate);
+		Date returnDate= sdformat.parse(returningDate);
+		Date date=new Date();
+		String today=sdformat.format(date);
+		Date now=sdformat.parse(today);
+		if((bookDate.compareTo(now)<0) || (returnDate.compareTo(bookDate)<0)){
+			return "bookCar";
+		}
+		else {
+			List<CarDates>list=dao.checkDate(carId);
+			if(list.isEmpty()) {
+				dao.saveDate(carDate);
+				return "booked";
+			}
+			else {
+				return "welcome";
+			}
+		}
 	}
 }

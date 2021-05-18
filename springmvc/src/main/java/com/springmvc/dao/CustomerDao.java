@@ -1,16 +1,14 @@
 package com.springmvc.dao;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCallback;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.springmvc.model.CarDates;
@@ -19,7 +17,7 @@ import com.springmvc.model.Customer;
 
 public class CustomerDao {
 	private JdbcTemplate jdbcTemplate;
-
+	String query;
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
@@ -29,7 +27,6 @@ public class CustomerDao {
 	    @Override  
 	    public Boolean doInPreparedStatement(PreparedStatement ps)  
 	            throws SQLException, DataAccessException {  
-	              
 	        ps.setString(1,customer.getName());  
 	        ps.setString(2,customer.getAddress());  
 	        ps.setString(3,customer.getPhone());  
@@ -40,43 +37,35 @@ public class CustomerDao {
 	    });
 	}
 	public List<Customer> getUser(String email,String pass) {
-		String query="select * from customer where email='"+email+"' and password='"+pass+"'";
-		return jdbcTemplate.query(query,new ResultSetExtractor<List<Customer>>(){  
-		    @Override  
-		     public List<Customer> extractData(ResultSet rs) throws SQLException,  
-		            DataAccessException {  
-		      
-		        List<Customer> list=new ArrayList<Customer>();  
-		        while(rs.next()){  
-		        Customer customer=new Customer();
-		        customer.setCid(rs.getInt(1));
-		        customer.setName(rs.getString(2));  
-		        customer.setAddress(rs.getString(3));  
-		        customer.setPhone(rs.getString(4));
-		        customer.setEmail(rs.getString(5));
-		        customer.setPassword(rs.getString(6));
-		        list.add(customer);  
-		        }  
-		        return list;  
-		        }  
-		    });  
+		query="select * from customer where email='"+email+"' and password='"+pass+"'";
+		return jdbcTemplate.query(query,new RowMapper<Customer>(){ 
+	        public Customer mapRow(ResultSet rs, int row) throws SQLException {    
+	        	Customer customer=new Customer();
+	        	customer.setCid(rs.getInt("cid"));
+	        	customer.setName(rs.getString("name"));  
+	        	customer.setAddress(rs.getString("address"));  
+	        	customer.setPhone(rs.getString("phone"));
+	        	customer.setEmail(rs.getString("email"));
+	        	customer.setPassword(rs.getString("password"));
+	    		return customer;}
+	        });    
 	}
 	public List<Cars> getCars(){    
 	    return jdbcTemplate.query("select * from cars",new RowMapper<Cars>(){
 	    	 @Override
 	        public Cars mapRow(ResultSet rs, int row) throws SQLException {    
 	            Cars cars=new Cars();    
-	            cars.setCarId(rs.getInt(1));    
-	            cars.setModel(rs.getString(2));    
-	            cars.setSeat(rs.getInt(3));    
-	            cars.setPermit(rs.getString(5)); 
+	            cars.setCarId(rs.getInt("carId"));    
+	            cars.setModel(rs.getString("model"));    
+	            cars.setSeat(rs.getInt("seat"));    
+	            cars.setPermit(rs.getString("permit")); 
 	            return cars;    
 	        }    
 	    });    
 	}  
 	public Boolean saveDate(final CarDates date){
 		//check date valid or not
-		String query="insert into carDates (name,bookingdate,returnDate)values(?,?,?)";  
+		query="insert into carDates (carId,bookingdate,returnDate)values(?,?,?)";  
 	    return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){  
 	    @Override  
 	    public Boolean doInPreparedStatement(PreparedStatement ps)  
@@ -88,5 +77,18 @@ public class CustomerDao {
 	        return ps.execute();      
 	    }  
 	    });
+	}
+	public List<CarDates> checkDate(int carId) throws ParseException {
+			query="select * from carDates where carId="+carId;
+			return jdbcTemplate.query(query,new RowMapper<CarDates>(){
+		    	 @Override
+		        public CarDates mapRow(ResultSet rs, int row) throws SQLException {    
+		            CarDates carDate=new CarDates();    
+		            carDate.setCarId(rs.getInt("carId"));    
+		            carDate.setBookingDate(rs.getString("bookingDate"));    
+		            carDate.setReturnDate(rs.getString("returnDate"));   
+		            return carDate;    
+		        }    
+		    });   
 	}
 }

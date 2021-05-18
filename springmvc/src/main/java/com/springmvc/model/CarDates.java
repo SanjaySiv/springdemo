@@ -1,7 +1,5 @@
 package com.springmvc.model;
 
-import java.util.Date;
-
 public class CarDates {
 	private int carId;
 	private String bookingDate;
