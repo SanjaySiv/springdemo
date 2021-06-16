@@ -17,6 +17,10 @@
       <form action="viewCustomers">
          <input type="submit" value="View Customers"/>
       </form> 
+      <br>
+      <form action="viewBookings">
+         <input type="submit" value="View Bookings"/>
+      </form> 
 </div>
 </body>  
 </html>

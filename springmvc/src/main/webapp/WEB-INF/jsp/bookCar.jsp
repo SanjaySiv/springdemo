@@ -4,16 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
+<div class=center>
 <form action="confirmBooking">
-	Car Id : ${carId} <br>
+	Car Id : ${carId}
 	<input hidden="text" name="carId" value="${carId}"/><br>
 	Booking Date : <input type="date" name="bookingDate" required/><br>
 	Return Date : <input type="date" name="returningDate" required/><br>
 	<input type="submit" value="confirm"/>
 </form>
+</div>
 </body>
 </html>

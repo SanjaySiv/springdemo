@@ -6,6 +6,13 @@ public class Cars {
 	private int seat;
 	private String regNo;
 	private String permit;
+	private int rent;
+	public int getRent() {
+		return rent;
+	}
+	public void setRent(int rent) {
+		this.rent = rent;
+	}
 	public int getCarId() {
 		return carId;
 	}

@@ -24,6 +24,9 @@
 Not a member? <a href="register.jsp">Register</a>
 </div>
 </form>
+<form action="covid">
+<input type="submit" value="Covid Report India">
+</form>
 </div>
 </body>  
 </html>

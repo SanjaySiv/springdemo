@@ -21,7 +21,7 @@
 <label> Seat </label>
 </div>
 <div class="txt-field"> 
-<input type="text" name="available" required/> 
+<input type="text" name="regNo" required/> 
 <span></span>
 <label> Registration No </label>
 </div>
@@ -29,6 +29,11 @@
 <input type="text" name="permit" required/> 
 <span></span>
 <label> Permit </label>
+</div>
+ <div class="txt-field"> 
+<input type="text" name="rent" required/> 
+<span></span>
+<label> Rent/Day </label>
 </div>
 <input type="submit" value="Add">
 </form>

@@ -13,8 +13,8 @@
          <input type="submit" value="View Cars"/>
       </form> 
       <br>
-      <form action="return">
-         <input type="submit" value="Return Car"/>
+      <form action="myBookings">
+         <input type="submit" value="MyBookings"/>
       </form> 
 </div>
 </body>  

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import com.springmvc.dao.CustomerDao;
+import com.springmvc.model.Cars;
 import com.springmvc.model.Customer;
 
 public class CustomerService {
@@ -33,5 +34,9 @@ public class CustomerService {
 		customer.setPassword(req.getParameter("pass"));
 		dao.saveUser(customer);
 		return "success";
+	}
+	public String getCar() {
+		dao.getCars(); 
+		return	"viewCars";
 	}
 }

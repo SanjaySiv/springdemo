@@ -12,7 +12,7 @@
 <a href="cars.jsp">Add Car</a> <br><br>
 <h1>Cars List</h1>  
 <table border="2" width="70%" cellpadding="2">  
-<tr><th>Car Id</th><th>Model</th><th>Seat No.</th><th>Registration No</th><th>Permit</th><th>Delete</th></tr>  
+<tr><th>Car Id</th><th>Model</th><th>Seat No.</th><th>Registration No</th><th>Permit</th><th>Rent/Day</th><th>Change Rent</th><th></th></tr>  
    <c:forEach var="cars" items="${list}">   
    <tr>  
    <td><c:out value="${cars.carId}"/></td>  
@@ -20,6 +20,13 @@
    <td><c:out value="${cars.seat}"/></td>
    <td><c:out value="${cars.regNo}"/></td>
    <td><c:out value="${cars.permit}"/></td>  
+   <td><c:out value="${cars.rent}"/></td>
+   <td>
+   <form action="changeRent/${cars.carId}">
+   <input type="text" name="rent" size="5"/>
+   <input type="submit" value="Change"/>
+   </form>
+   </td>
    <td><a href="deleteCar/${cars.carId}">Delete</a></td>    
    </tr>  
    </c:forEach>  
