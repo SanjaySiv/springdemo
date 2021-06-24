@@ -2,13 +2,23 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>  
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>  
-<html>
+<html lang="eng" dir="ltr">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Insert title here</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="css/viewCars.css">
 </head>
 <body>
+<nav>
+<label class="logo">Car Rental</label>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Contact</a></li>
+<li><a href="#">Log Out</a></li>
+</ul>
+</nav>
 <h1>Cars List</h1>  
 <table border="2" width="70%" cellpadding="2">  
 <tr><th>Car Id</th><th>Model</th><th>Seat No.</th><th>Permit</th><th>Rent/Day</th><th></th></tr>  

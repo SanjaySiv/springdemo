@@ -1,20 +1,8 @@
-@charset "ISO-8859-1";
-th,td {
-	padding: 15px;
-    text-align: center;
-}
-th{
-	color:white;
-	background-color:black;
-}
 *{
 	padding:0;
 	margin:0;
 	text-decoration:none;
 	list-style:none;	
-}
-body{
-	font-family:Cursive;
 }
 nav{
 	height:80px;

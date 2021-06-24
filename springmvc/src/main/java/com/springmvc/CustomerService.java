@@ -35,8 +35,9 @@ public class CustomerService {
 		dao.saveUser(customer);
 		return "success";
 	}
-	public String getCar() {
-		dao.getCars(); 
+	public String getCar(Model model) {
+		List<Cars>carList=dao.getCars(); 
+		model.addAttribute("list",carList);
 		return	"viewCars";
 	}
 }

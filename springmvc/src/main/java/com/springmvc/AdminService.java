@@ -12,7 +12,7 @@ public class AdminService {
 	
 	@Autowired
 	AdminDao dao;
-	public String viewCustomers(Model model) {
+	public String editCustomers(Model model) {
 		List<Customer>list=dao.editCustomer(); 
 		model.addAttribute("list",list);
 		return "editCustomers";

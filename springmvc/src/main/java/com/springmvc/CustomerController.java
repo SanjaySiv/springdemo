@@ -46,9 +46,6 @@ public class CustomerController {
 	@RequestMapping("/viewCars") 
 	public String viewCars(Model m) {
 		List<Cars>carList=dao.getCars(); 
-		/*
-		 * CustomerService service = new CustomerService(); service.getCar();
-		 */
 		m.addAttribute("list",carList);
 		return	"viewCars"; 
 	 }
