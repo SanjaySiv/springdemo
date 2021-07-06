@@ -20,6 +20,7 @@ import com.springmvc.model.Customer;
 public class AdminController {
 	@Autowired
 	AdminDao dao;
+	AdminService service;
 	
 	@RequestMapping(value="/editCars") 
 	public String editCars(Model model) {

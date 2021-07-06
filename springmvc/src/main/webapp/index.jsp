@@ -15,8 +15,6 @@
 <li><a href="#contact">Contact</a></li>
 </ul>
 </div>
-
-
 <div class="banner-area" id="home">
 <div class="form">
 	<form action="login" class="login" method="post"> 
@@ -31,16 +29,16 @@
 		</div>
 		<input type="submit" class="form_button" value="Sign In">
 		<div class="signup_link">
-		Not a member? <a href="register.jsp">Register</a>
+		Not a member?<a href="register.jsp" class="register">Register</a>
 		</div>
 	</form>
 </div>
-</div>
-
-<form action="covid">
-<input type="submit" value="Covid Report India">
+<div class="covid">
+	<form action="covid">
+	<input type="submit" class="form_button" value="Covid Report India">
 </form>
-
+</div>
+</div>
 <div class="about-area" id="about">
 <div class="text-part">
 	<h1>About</h1>

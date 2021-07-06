@@ -4,7 +4,7 @@
     <title>Spring MVC login example.</title>
   </head>
   <body>
-    user added
-    <jsp:include page="/index.jsp"></jsp:include>  
+    <jsp:include page="/index.jsp"></jsp:include> 
+    user added 
   </body>
 </html>

@@ -9,9 +9,6 @@ public class CovidCasesIndia {
 	int deathsNew;
 	int previousDayTests;
 	int totalCases;
-	String sourceUrl;
-	String lastUpdatedAtApify;
-	String readMe;
 	StateWiseCovid[] regionData;
 	public int getActiveCases() {
 		return activeCases;
@@ -67,23 +64,5 @@ public class CovidCasesIndia {
 	}
 	public void setRegionData(StateWiseCovid[] regionData) {
 		this.regionData = regionData;
-	}
-	public String getSourceUrl() {
-		return sourceUrl;
-	}
-	public void setSourceUrl(String sourceUrl) {
-		this.sourceUrl = sourceUrl;
-	}
-	public String getLastUpdatedAtApify() {
-		return lastUpdatedAtApify;
-	}
-	public void setLastUpdatedAtApify(String lastUpdatedAtApify) {
-		this.lastUpdatedAtApify = lastUpdatedAtApify;
-	}
-	public String getReadMe() {
-		return readMe;
-	}
-	public void setReadMe(String readMe) {
-		this.readMe = readMe;
 	}
 }

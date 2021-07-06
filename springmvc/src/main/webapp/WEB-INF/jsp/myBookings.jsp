@@ -9,7 +9,9 @@
 <link rel="stylesheet" type="text/css" href="css/viewCars.css">
 </head>
 <body>
-<h1>My Bookings</h1>  
+<jsp:include page="/header.jsp"></jsp:include>
+<h1>My Bookings</h1>
+<div class="center"> 
 <table border="2" width="70%" cellpadding="2">  
 <tr><th>Booking Date</th><th>Return Date</th><th>Rent amount</th></tr>  
    <c:forEach var="carDate" items="${list}">   
@@ -19,7 +21,7 @@
    <td><c:out value="${carDate.rentAmount}"/></td>      
    </tr>  
    </c:forEach>  
-   </table>  
-   <br/>  
+   </table> 
+</div>  
 </body>
 </html>

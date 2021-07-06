@@ -6,16 +6,26 @@
 <meta charset="utf-8">
 <title>Login form</title>
 <link rel="stylesheet" type="text/css" href="css/view.css">
-</head>  
-<p>${message}</p><br> 
+</head>
+<body>  
+<jsp:include page="/header.jsp"></jsp:include>
+ 
 <div class="center">
+	<div class="form">
+	<p>${message}</p><br>
       <form action="viewCars" method="get">
-         <input type="submit" value="View Cars"/>
+         <input type="submit" class="form_button" value="View Cars"/>
       </form> 
       <br>
       <form action="myBookings">
-         <input type="submit" value="MyBookings"/>
+         <input type="submit" class="form_button" value="MyBookings"/>
       </form> 
+      </div>
+      <div class="images">
+      	<img class="mySlides" src="../resources/images/car1.jpg" style="width:100%">
+  		<img class="mySlides" src="../resources/images/car2.jpg" style="width:100%">
+ 	    <img class="mySlides" src="../resources/images/car3.jpg" style="width:100%">
+      </div>
 </div>
 </body>  
 </html>

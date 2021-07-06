@@ -18,7 +18,7 @@ Deaths New : ${covid.deathsNew}<br>
 Previous Day Tests : ${covid.previousDayTests}<br>
 Total Cases : ${covid.totalCases}<br>
 <h3>Region wise updates :-</h3>
-<c:forEach items="${covid.regionData}" var="regionData">
+	  <c:forEach items="${covid.regionData}" var="regionData">
 		 <h3><c:out value="${regionData.region}" /><br></h3>
          Active Cases : <c:out value="${regionData.activeCases}" /><br>
          New Infected : <c:out value="${regionData.newInfected}" /><br>

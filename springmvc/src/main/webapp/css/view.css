@@ -2,18 +2,34 @@
 body{
 	margin:0;
 	padding:0;
-	font-family:Cursive;
-	background:linear-gradient(120deg,#2980b9,#8e44ad);
-	height:100vh;
 	overflow:hidden;
 }
 .center{
+	
+}
+.form{
 	position:absolute;
-	top:50%;
-	left:50%;
+	padding: 550px;
+	float:left;
+	top:30%;
+	left:20%;
 	transform:translate(-50%,-50%);
 	width:400px;
+	
 	border-radius:10px;
+	
+}
+.images{
+	float:right;
+	position:relative;
+	background:#000;
+	width:400px;
+	right:5%;
+  	padding: 150px;
+	height:50vh;
+	background-repeat:no-repeat;
+	-webkit-background-size:cover;
+	
 }
 input[type="submit"]{
 	width:100%;

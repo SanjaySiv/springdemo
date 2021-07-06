@@ -9,4 +9,7 @@
 <item elementID="=springmaven/src\/test\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1615976092617_2" label="Window Working Set" name="Aggregate for window 1615976092616"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1625199334807_3" label="Window Working Set" name="Aggregate for window 1625199334807"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1625216184727_4" label="Window Working Set" name="Aggregate for window 1625216184727"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1625225231796_5" label="Window Working Set" name="Aggregate for window 1625225231796"/>
 </workingSetManager>

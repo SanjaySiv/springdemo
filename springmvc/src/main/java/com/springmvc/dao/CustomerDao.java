@@ -64,17 +64,16 @@ public class CustomerDao {
 	        }    
 	    });    
 	}  
-	public Boolean saveDate(final CarDates date,final Customer customer){
+	public Boolean saveDate(final CarDates date){
 		query="insert into carDates (carId,bookingdate,returnDate,customer_id,rentAmount)values(?,?,?,?,?)";  
 	    return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){  
 	    @Override  
 	    public Boolean doInPreparedStatement(PreparedStatement preparedStmt)  
 	            throws SQLException, DataAccessException {  
-	              
 	    	preparedStmt.setInt(1,date.getCarId());  
 	    	preparedStmt.setString(2, date.getBookingDate());  
 	    	preparedStmt.setString(3,date.getReturnDate());  
-	    	preparedStmt.setInt(4,customer.getCustomer_id());
+	    	preparedStmt.setInt(4,date.getCustomer_id());
 	    	preparedStmt.setInt(5,date.getRentAmount());
 	        return preparedStmt.execute();      
 	    }  

@@ -10,16 +10,9 @@
 <link rel="stylesheet" type="text/css" href="css/viewCars.css">
 </head>
 <body>
-<nav>
-<label class="logo">Car Rental</label>
-<ul>
-<li><a href="#">Home</a></li>
-<li><a href="#">About</a></li>
-<li><a href="#">Contact</a></li>
-<li><a href="#">Log Out</a></li>
-</ul>
-</nav>
-<h1>Cars List</h1>  
+<jsp:include page="/header.jsp"></jsp:include>
+<div class="center">
+<h1>Cars List</h1><br>  
 <table border="2" width="70%" cellpadding="2">  
 <tr><th>Car Id</th><th>Model</th><th>Seat No.</th><th>Permit</th><th>Rent/Day</th><th></th></tr>  
    <c:forEach var="cars" items="${list}">   
@@ -32,7 +25,7 @@
    <td><a href="bookCar/${cars.carId}">Book</a></td>    
    </tr>  
    </c:forEach>  
-   </table>  
-   <br/>  
+   </table>
+  </div>    
 </body>
 </html>

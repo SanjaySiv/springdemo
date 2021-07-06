@@ -16,7 +16,6 @@ public class CovidApiController {
 		RestTemplate restTemplate=new RestTemplate();
 		CovidCasesIndia cases=restTemplate.getForObject("https://api.apify.com/v2/key-value-stores/toDWvRj1JpTXiM8FF/records/LATEST?disableRedirect=true",
 				CovidCasesIndia.class);
-		cases.getActiveCases();
 		model.put("covid",cases);
 		return new ModelAndView("covidReport");
 	}

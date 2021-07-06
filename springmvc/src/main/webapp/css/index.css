@@ -42,9 +42,9 @@ a:hover{
 }
 .banner-area{
 	position:relative;
-	background-image:url(https://wallpapermemory.com/uploads/715/sports-car-background-hd-1440x900-316148.jpg);
+	background-image:url("../resources/images/car5.jpg");
 	width:100%;
-	height:110vh;
+	height:112vh;
 	background-repeat:no-repeat;
 	-webkit-background-size:cover;
 	background-size:cover;
@@ -66,6 +66,7 @@ a:hover{
 h1{
 	font-size:50px;
 	font-family:Audiowide;
+	color:#ff8080;
 }
 p{
 	font-size:20px;
@@ -84,7 +85,7 @@ html{
 .form {
   float: right;
   width: 650px;
-  padding: 200px;
+  padding: 150px;
   height:100vh;
 }
 :root{
@@ -174,6 +175,11 @@ h1{
 .form_input:focus{
 	border:2px solid var(--first-color);
 }
-.signup_link{
-	align-items:center;
+.register{
+	color:#0000ff;
+	text-transform:capitalize;
+}
+.covid {
+  float: left;
+  padding:200px;
 }

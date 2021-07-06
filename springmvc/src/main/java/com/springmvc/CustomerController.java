@@ -84,6 +84,7 @@ public class CustomerController {
 		carDate.setBookingDate(bookingDate);
 		carDate.setReturnDate(returningDate);
 		carDate.setRentAmount(rentAmount);
+		carDate.setCustomer_id(customer.getCustomer_id());
 		if((bookDate.compareTo(now)<0) || (returnDate.compareTo(bookDate)<0)){
 			model.addAttribute("carId",carId);
 			return "bookCar";
@@ -91,8 +92,8 @@ public class CustomerController {
 		else {		
 			carDateList=dao.checkDate(carId);
 			if(carDateList.isEmpty()) {
-				dao.saveDate(carDate,customer);
-				model.addAttribute("rentAmount",rentAmount);
+				dao.saveDate(carDate);
+				model.addAttribute("details",carDate);
 				return "booked";
 			}
 			else {
@@ -106,8 +107,8 @@ public class CustomerController {
 						count++;
 				}
 				if(count==0) {
-					dao.saveDate(carDate,customer);
-					model.addAttribute("rentAmount",rentAmount);
+					dao.saveDate(carDate);
+					model.addAttribute("details",carDate);
 					return "booked";
 				}
 				else {
