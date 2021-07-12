@@ -50,6 +50,65 @@ a:hover{
 .center{
 	padding:100px;
 }
+.about-area, .service-area, .contact-area{
+	position:relative;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+	flex-wrap:wrap;
+	flex-direction:row;
+	width:100%;
+	height:700px;
+}
+.text-part{
+	width:65%;
+	height:70%;
+}
+h1{
+	font-size:50px;
+	font-family:Audiowide;
+	color:#ff8080;
+}
+p{
+	font-size:20px;
+	line-height:50px;
+}
+.about-area, .contact-area{
+	background:#fefefe;
+}
+.service-area{
+	background:#262626;
+	color:#fff;
+}
+html{
+	scroll-behavior:smooth;
+}
+.form_button{
+	display:block;
+	
+	padding:.75rem 2rem;
+	outline:none;
+	border:none;
+	background-color:#000;
+	color:#fff;
+	font-size:var(--normal-size);
+	border-radius:.5rem;
+	cursor:pointer;
+	transition:.3s;
+}
+.form_button:hover{
+	box-shadow:0 10px 36px rgba(0,0,0,.25);
+}
+.form_input{
+	
+	font-size:var(--normal-font-size);
+	border: 1px solid var(--border-color);
+	border-radius:.5rem;
+	outline:none;
+	padding:1rem;
+	background:none;
+	z-index:1;
+}
 </style>
 </head>
 <body>
@@ -69,8 +128,9 @@ a:hover{
 	<input hidden="text" name="carId"  value="${carId}"/><br>
 	Booking Date : <input type="date" class="form_input" name="bookingDate" required/><br>
 	Return Date : <input type="date" class="form_input"name="returningDate" required/><br>
-	<input type="submit" value="confirm"/>
+	<input type="submit" class="form_button" value="confirm"/>
 </form>
 </div>
+<jsp:include page="/WEB-INF/jsp/details.jsp"></jsp:include>
 </body>
 </html>

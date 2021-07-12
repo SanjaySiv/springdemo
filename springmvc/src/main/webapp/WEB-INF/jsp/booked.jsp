@@ -55,6 +55,9 @@ th{
 	color:white;
 	background-color:black;
 }
+.table{
+	padding:100px;
+}
 </style>
 </head>
 <body>
@@ -79,6 +82,6 @@ th{
    </tr>
   </table>
  </div>
-You have successfully booked your car. <a href="view" >back to home</a>
+You have successfully booked your car. <a href="view.jsp" >back to home</a>
 </body>
 </html>

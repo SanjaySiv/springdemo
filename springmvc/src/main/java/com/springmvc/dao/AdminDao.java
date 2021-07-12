@@ -20,8 +20,9 @@ public class AdminDao {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-public List<Cars> showCars(){    
-    return jdbcTemplate.query("select * from cars",new RowMapper<Cars>(){
+public List<Cars> showCars(){
+	query="select * from cars";
+    return jdbcTemplate.query(query,new RowMapper<Cars>(){
     	 @Override
         public Cars mapRow(ResultSet resrultSet, int row) throws SQLException {    
             Cars cars=new Cars();    
@@ -55,8 +56,9 @@ public Boolean addCar(final Cars cars){
     }  
     });
 }
-public List<Customer> editCustomer(){    
-    return jdbcTemplate.query("select customer_id,name,address,phone,email from customer",new RowMapper<Customer>(){
+public List<Customer> viewCustomers(){  
+	query="select customer_id,name,address,phone,email from customer where role='customer'";
+    return jdbcTemplate.query(query,new RowMapper<Customer>(){
     	 @Override
         public Customer mapRow(ResultSet resrultSet, int row) throws SQLException {    
     		 Customer customer=new Customer();    
@@ -73,8 +75,9 @@ public int deleteCustomer(int customer_id){
 	query="delete from customer where customer_id='"+customer_id+"'";    
     return jdbcTemplate.update(query);    
 	} 
-public List<CarDates> viewBookings(){    
-    return jdbcTemplate.query("select * from cardates",new RowMapper<CarDates>(){
+public List<CarDates> viewBookings(){  
+	query="select * from cardates";
+    return jdbcTemplate.query(query,new RowMapper<CarDates>(){
     	 @Override
         public CarDates mapRow(ResultSet resrultSet, int row) throws SQLException {    
     		 CarDates carDates=new CarDates();    
@@ -90,5 +93,37 @@ public List<CarDates> viewBookings(){
 public int updateRent(int carId,int rent) {
 	query="update cars set rent="+rent+" where carId="+carId;
 	return jdbcTemplate.update(query);
+	}
+public Boolean insertAdmin(final Customer customer){  
+	query="insert into customer (name,address,phone,email,username,password,role)values(?,?,?,?,?,?,?)";  
+    return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){  
+    @Override  
+    public Boolean doInPreparedStatement(PreparedStatement preparedStatement)  
+            throws SQLException, DataAccessException {  
+        preparedStatement.setString(1,customer.getName());  
+        preparedStatement.setString(2,customer.getAddress());  
+        preparedStatement.setString(3,customer.getPhone());  
+        preparedStatement.setString(4,customer.getEmail());
+        preparedStatement.setString(5,customer.getUsername());
+        preparedStatement.setString(6,customer.getPassword());
+        preparedStatement.setString(7,customer.getRole());
+        return preparedStatement.execute();      
+    }  
+    });
+}
+public List<Customer> viewAdmins() {
+	query="select customer_id,name,address,phone,email from customer where role='admin'";
+    return jdbcTemplate.query(query,new RowMapper<Customer>(){
+    	 @Override
+        public Customer mapRow(ResultSet resrultSet, int row) throws SQLException {    
+    		 Customer customer=new Customer();    
+    		 customer.setCustomer_id(resrultSet.getInt("customer_id")); 
+    		 customer.setName(resrultSet.getString("name"));    
+    		 customer.setAddress(resrultSet.getString("address"));    
+    		 customer.setPhone(resrultSet.getString("phone"));    
+    		 customer.setEmail(resrultSet.getString("email")); 
+            return customer;    
+        }    
+    });  
 	}
 }

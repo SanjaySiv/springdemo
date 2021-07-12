@@ -92,7 +92,7 @@ html{
 	--first-color:#ff8080;
 	--input-color:#80868B;
 	--border-color:#c0c0c0;
-	--normai-font-size:1rem;
+	--normal-font-size:1rem;
 	--small-font-size:.75rem;
 }
 *,::before,::after{
@@ -123,7 +123,7 @@ h1{
 	left:0;
 	width:100%;
 	height:100%;
-	font-size:var(--normal-ffont-size);
+	font-size:var(--normal-font-size);
 	border: 1px solid var(--border-color);
 	border-radius:.5rem;
 	outline:none;

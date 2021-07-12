@@ -1,0 +1,33 @@
+.about-area, .service-area, .contact-area{
+	position:relative;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+	flex-wrap:wrap;
+	flex-direction:row;
+	width:100%;
+	height:700px;
+}
+.text-part{
+	width:65%;
+	height:70%;
+}
+h1{
+	font-size:50px;
+	font-family:Audiowide;
+	color:#ff8080;
+}
+p{
+	font-size:20px;
+	line-height:50px;
+}
+.about-area, .contact-area{
+	background:#fefefe;
+}
+.service-area{
+	background:#262626;
+	color:#fff;
+}
+html{
+	scroll-behavior:smooth;
+}

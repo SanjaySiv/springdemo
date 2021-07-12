@@ -8,12 +8,12 @@
 <link rel="stylesheet" type="text/css" href="css/view.css">
 </head>
 <body>  
-<jsp:include page="/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
  
 <div class="center">
 	<div class="form">
 	<p>${message}</p><br>
-      <form action="viewCars" method="get">
+      <form action="viewCarList" method="get">
          <input type="submit" class="form_button" value="View Cars"/>
       </form> 
       <br>
@@ -27,5 +27,6 @@
  	    <img class="mySlides" src="../resources/images/car3.jpg" style="width:100%">
       </div>
 </div>
+<jsp:include page="/WEB-INF/jsp/details.jsp"></jsp:include>
 </body>  
 </html>

@@ -1,4 +1,4 @@
-package com.springmvc;
+package com.springmvc.controllers;
 
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;

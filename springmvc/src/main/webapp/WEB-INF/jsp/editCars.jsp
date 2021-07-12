@@ -9,11 +9,10 @@
 <link rel="stylesheet" type="text/css" href="css/viewCars.css">
 </head>
 <body>
-<a href="cars.jsp">Add Car</a> <br><br>
 <h1>Cars List</h1>  
 <table border="2" width="70%" cellpadding="2">  
 <tr><th>Car Id</th><th>Model</th><th>Seat No.</th><th>Registration No</th><th>Permit</th><th>Rent/Day</th><th>Change Rent</th><th></th></tr>  
-   <c:forEach var="cars" items="${list}">   
+   <c:forEach var="cars" items="${carList}">   
    <tr>  
    <td><c:out value="${cars.carId}"/></td>  
    <td><c:out value="${cars.model}"/></td>  
@@ -32,5 +31,9 @@
    </c:forEach>  
    </table>  
    <br/>  
+   <br>
+      <form action="addCar">
+         <input type="submit" value="Add Car"/>
+      </form>
 </body>
 </html>

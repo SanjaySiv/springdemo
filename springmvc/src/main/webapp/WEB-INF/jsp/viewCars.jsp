@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="css/viewCars.css">
 </head>
 <body>
-<jsp:include page="/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
 <div class="center">
 <h1>Cars List</h1><br>  
 <table border="2" width="70%" cellpadding="2">  
@@ -26,6 +26,7 @@
    </tr>  
    </c:forEach>  
    </table>
-  </div>    
+  </div>  
+    
 </body>
 </html>

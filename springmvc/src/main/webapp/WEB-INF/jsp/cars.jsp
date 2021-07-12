@@ -9,7 +9,7 @@
 <body>
 <div class="center">
 <h1>Add Car</h1>
-<form action="addCar" method="post"> 
+<form action="insertCar" method="post"> 
 <div class="txt-field"> 
 <input type="text" name="model" required/>
 <span></span>  
