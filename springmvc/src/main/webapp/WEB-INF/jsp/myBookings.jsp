@@ -14,7 +14,7 @@
 <div class="center"> 
 <table border="2" width="70%" cellpadding="2">  
 <tr><th>Booking Date</th><th>Return Date</th><th>Rent amount</th></tr>  
-   <c:forEach var="carDate" items="${list}">   
+   <c:forEach var="carDate" items="${bookings}">   
    <tr>  
    <td><c:out value="${carDate.bookingDate}"/></td>  
    <td><c:out value="${carDate.returnDate}"/></td>  

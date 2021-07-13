@@ -38,7 +38,6 @@
 			<input type="password" class="form_input" name="password" placeholder="" required/> 
 			<label for="" class="form_label"> Password </label>
 		</div>
-		<input hidden="text" name="role" value="customer"/>
 		<input type="submit" class="form_button" value="Register">
 	</form>
 </div>

@@ -34,8 +34,8 @@ public class AdminService {
 	public void updateRent(int carId, int rent) {
 		adminDao.updateRent(carId, rent);
 	}
-	public void insertAdmin(Customer customer) {
-		adminDao.insertAdmin(customer);
+	public void insertUser(Customer customer) {
+		adminDao.insertUser(customer);
 	}
 	public List<Customer> viewAdmins() {
 		return adminDao.viewAdmins();

@@ -94,7 +94,7 @@ public int updateRent(int carId,int rent) {
 	query="update cars set rent="+rent+" where carId="+carId;
 	return jdbcTemplate.update(query);
 	}
-public Boolean insertAdmin(final Customer customer){  
+public Boolean insertUser(final Customer customer){  
 	query="insert into customer (name,address,phone,email,username,password,role)values(?,?,?,?,?,?,?)";  
     return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){  
     @Override  
@@ -112,7 +112,7 @@ public Boolean insertAdmin(final Customer customer){
     });
 }
 public List<Customer> viewAdmins() {
-	query="select customer_id,name,address,phone,email from customer where role='admin'";
+	query="select customer_id,name,address,phone,email from customer where role='employee'";
     return jdbcTemplate.query(query,new RowMapper<Customer>(){
     	 @Override
         public Customer mapRow(ResultSet resrultSet, int row) throws SQLException {    

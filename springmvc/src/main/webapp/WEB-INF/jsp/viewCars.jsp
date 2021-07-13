@@ -15,7 +15,7 @@
 <h1>Cars List</h1><br>  
 <table border="2" width="70%" cellpadding="2">  
 <tr><th>Car Id</th><th>Model</th><th>Seat No.</th><th>Permit</th><th>Rent/Day</th><th></th></tr>  
-   <c:forEach var="cars" items="${list}">   
+   <c:forEach var="cars" items="${carList}">   
    <tr>  
    <td><c:out value="${cars.carId}"/></td>  
    <td><c:out value="${cars.model}"/></td>  

@@ -18,7 +18,7 @@
    <td><c:out value="${customer.address}"/></td>  
    <td><c:out value="${customer.phone}"/></td>  
    <td><c:out value="${customer.email}"/></td>  
-   <td><a href="deleteCustomer/${customer.customer_id}">Delete</a></td>    
+   <td><a href="deleteAdmin/${customer.customer_id}">Delete</a></td>    
    </tr>  
    </c:forEach>  
    </table> 

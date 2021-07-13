@@ -21,6 +21,9 @@
    <td><a href="deleteCustomer/${customer.customer_id}">Delete</a></td>    
    </tr>  
    </c:forEach>  
-   </table>  
+   </table>  <br>
+   <form action="addCustomer">
+         <input type="submit" value="Add Customer"/>
+      </form>
 </body>
 </html>

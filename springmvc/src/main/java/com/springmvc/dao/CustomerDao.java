@@ -102,8 +102,8 @@ public class CustomerDao {
 	    String rent =  jdbcTemplate.queryForObject(query, new Object[] { carId }, String.class);
 	    return rent;
 	}
-	public List<CarDates> myBookings(Customer customer) throws ParseException {
-		query="select bookingDate,returndate,rentAmount from carDates where customer_id="+customer.getCustomer_id();
+	public List<CarDates> myBookings(int customer_id) throws ParseException {
+		query="select bookingDate,returndate,rentAmount from carDates where customer_id="+customer_id;
 		return jdbcTemplate.query(query,new RowMapper<CarDates>(){
 	    	 @Override
 	        public CarDates mapRow(ResultSet resrultSet, int row) throws SQLException {    

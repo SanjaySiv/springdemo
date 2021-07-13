@@ -15,7 +15,6 @@ import com.springmvc.model.CarDates;
 import com.springmvc.model.Cars;
 import com.springmvc.model.Customer;
 import com.springmvc.services.AdminService;
-import com.springmvc.services.CustomerService;
 
 @Controller
 public class AdminController {
@@ -59,6 +58,23 @@ public class AdminController {
 		adminService.deleteCustomer(customer_id);    
        return "redirect:/viewCustomers";    
     } 
+	@RequestMapping(value="/addCustomer")
+	public String addCustomer() {
+		return "addCustomer";
+	}
+	@RequestMapping(value="/insertCustomer")
+	public String insertCustomer(HttpServletRequest request) {
+		Customer customer=new Customer();
+		customer.setName(request.getParameter("name"));
+		customer.setAddress(request.getParameter("address"));
+		customer.setPhone(request.getParameter("phone"));
+		customer.setEmail(request.getParameter("email"));
+		customer.setUsername(request.getParameter("username"));
+		customer.setPassword(request.getParameter("password"));
+		customer.setRole("customer");
+		adminService.insertUser(customer);
+		return "redirect:/viewCustomers";
+	}
 	@RequestMapping("/viewBookings")
 	public String viewBookings(Model model) {
 		List<CarDates>bookingList=adminService.viewBookings(); 
@@ -82,7 +98,7 @@ public class AdminController {
 		return "addAdmin";
 	}
 	@RequestMapping(value="/insertAdmin")
-	public String addCustomer(HttpServletRequest request) {
+	public String insertAdmin(HttpServletRequest request) {
 		Customer customer=new Customer();
 		customer.setName(request.getParameter("name"));
 		customer.setAddress(request.getParameter("address"));
@@ -90,8 +106,13 @@ public class AdminController {
 		customer.setEmail(request.getParameter("email"));
 		customer.setUsername(request.getParameter("username"));
 		customer.setPassword(request.getParameter("password"));
-		customer.setRole(request.getParameter("role"));
-		adminService.insertAdmin(customer);
+		customer.setRole("employee");
+		adminService.insertUser(customer);
 		return "redirect:/viewAdmins";
 	}
+	@RequestMapping(value="/deleteAdmin/{customer_id}",method = RequestMethod.GET)
+	 public String deleteAdmin(@PathVariable int customer_id){    
+		adminService.deleteCustomer(customer_id);    
+      return "redirect:/viewAdmins";    
+   } 
 }

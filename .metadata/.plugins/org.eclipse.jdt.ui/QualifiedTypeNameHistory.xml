@@ -38,12 +38,12 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.springmvc.model.CovidCasesIndia"/>
     <fullyQualifiedTypeName name="com.springmvc.model.StateWiseCovid"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.springmvc.dao.AdminDao"/>
     <fullyQualifiedTypeName name="com.springmvc.AdminService"/>
     <fullyQualifiedTypeName name="com.springmvc.services.AdminService"/>
     <fullyQualifiedTypeName name="com.springmvc.CustomerService"/>
-    <fullyQualifiedTypeName name="com.springmvc.model.Customer"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.springmvc.services.CustomerService"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.springmvc.model.Customer"/>
 </qualifiedTypeNameHistroy>

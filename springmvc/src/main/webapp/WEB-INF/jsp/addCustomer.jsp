@@ -8,8 +8,8 @@
 </head>
 <body>
 <div class="form">
-	<form action="insertAdmin" class="login" method="post"> 
-	<h1 class="form_title">Add Admin</h1>
+	<form action="insertCustomer" class="login" method="post"> 
+	<h1 class="form_title">Add Customer</h1>
 		<div class="form_div"> 
 			<input type="text" class="form_input" name="name" placeholder="" required/>  
 			<label for="" class="form_label">Name</label>
@@ -36,6 +36,6 @@
 		</div>
 		<input type="submit" class="form_button" value="Register">
 	</form>
-</div>
+	</div>
 </body>
 </html>
