@@ -4,6 +4,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,62 +13,85 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.springmvc.model.CarDates;
 import com.springmvc.model.Cars;
-import com.springmvc.model.Customer;
+import com.springmvc.model.Users;
 import com.springmvc.services.CustomerService;
 @Controller
 public class CustomerController {
 	@Autowired
 	CustomerService customerService;
-	String message;
-	public static int customer_id;
 	@RequestMapping(value="/login",method = RequestMethod.POST)  
-    public String getUser(HttpServletRequest request,Model model) {    
+    public String getUser(HttpServletRequest request,Model model) { 
+		String message = null;
 		String username=request.getParameter("username"); 
 		String password=request.getParameter("password");
-		int flag=customerService.getUser(username,password);
-		if(flag==0) {
-			message="Sorry, You entered incorrect credentials"; 
+		Users users=customerService.getCustomer(username,password);
+		if(users==null) {
 			model.addAttribute("message",message);
 			return "errorpage";
 		}
-		else if(flag==1) {
-			return "admin";
+		else if(!(users==null) && users.getRole().contentEquals("employee")) {
+		return "admin";
 		}
+		else if(!(users==null) && users.getRole().contentEquals("dealer")) {
+			model.addAttribute("users",users);
+			return "dealer";
+			}
 		else {
+			model.addAttribute("users",users);
 			return "view";
 		}
     }
-	@RequestMapping("/viewCarList") 
-	public String viewCars(Model model) {
-		List<Cars>carList=customerService.viewCars(); 
+	@RequestMapping(value="/viewCarList",method = RequestMethod.POST) 
+	public String viewCars(Model model,HttpServletRequest request) {
+		List<Cars>carList=customerService.viewCars();
+		String UserId=request.getParameter("userId");
+		model.addAttribute("userId",UserId);
 		model.addAttribute("carList",carList);
 		return	"viewCars"; 
 	 }
-	@RequestMapping(value="/save")
-	public String addCustomer(HttpServletRequest request) {
-		Customer customer=new Customer();
-		customer.setName(request.getParameter("name"));
-		customer.setAddress(request.getParameter("address"));
-		customer.setPhone(request.getParameter("phone"));
-		customer.setEmail(request.getParameter("email"));
-		customer.setUsername(request.getParameter("username"));
-		customer.setPassword(request.getParameter("password"));
-		customer.setRole("customer");
-		customerService.addCustomer(customer);
-		return "success";
+	@RequestMapping("/customerRegister")
+	public String customerRegister() {
+		return "register";
 	}
-	@RequestMapping(value="/bookCar/{carId}",method = RequestMethod.GET)
-	 public String bookCar(@PathVariable int carId,Model model) {   
+	@RequestMapping(value="/save",method = RequestMethod.POST)
+	public String addCustomer(HttpServletRequest request,Model model) {
+		Users users=new Users();
+		users.setName(request.getParameter("name"));
+		users.setAddress(request.getParameter("address"));
+		users.setPhone(request.getParameter("phone"));
+		users.setEmail(request.getParameter("email"));
+		users.setUsername(request.getParameter("username"));
+		users.setPassword(request.getParameter("password"));
+		users.setRole("customer");
+		try {
+		customerService.addCustomer(users);
+		return "success";
+		}
+		catch(DuplicateKeyException e){
+			model.addAttribute("message","user already exist");
+			return "register";
+		}
+	}
+	@RequestMapping(value="/bookCar/{carId}",method = RequestMethod.POST)
+	 public String bookCar(@PathVariable int carId,Model model,HttpServletRequest request) {   
 		model.addAttribute("carId",carId);
+		String userId=request.getParameter("userId");
+		model.addAttribute("userId",userId);
         return "bookCar";    
     }
-	@RequestMapping("/bookCar/confirmBooking")
-	public String confirmBooking(HttpServletRequest request,Model model) throws ParseException {
-		return customerService.confirmBooking(request,model,customer_id);
+	@RequestMapping(value="/bookCar/confirmBooking",method = RequestMethod.POST)
+	public String confirmBooking(HttpServletRequest request,Model model)  {
+		try {
+			int userId = Integer.parseInt(request.getParameter("userId"));
+			return customerService.confirmBooking(request,model,userId);
+		} catch (ParseException e) {
+			return "";
+		}
 	}
 	@RequestMapping("/myBookings")
-	public String myBookings(Model model) throws ParseException{
-		List<CarDates>bookings=customerService.myBookings(customer_id);
+	public String myBookings(HttpServletRequest request,Model model) {
+		int userId=Integer.parseInt(request.getParameter("userId"));
+		List<CarDates>bookings=customerService.myBookings(userId);
 		model.addAttribute("bookings", bookings);
 		return "myBookings";
 	}

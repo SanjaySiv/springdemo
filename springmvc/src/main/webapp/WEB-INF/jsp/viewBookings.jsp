@@ -17,7 +17,7 @@
    <td><c:out value="${carDates.carId}"/></td>  
    <td><c:out value="${carDates.bookingDate}"/></td>  
    <td><c:out value="${carDates.returnDate}"/></td>  
-   <td><c:out value="${carDates.customer_id}"/></td> 
+   <td><c:out value="${carDates.userId}"/></td> 
    <td><c:out value="${carDates.rentAmount}"/></td>    
    </tr>  
    </c:forEach>  

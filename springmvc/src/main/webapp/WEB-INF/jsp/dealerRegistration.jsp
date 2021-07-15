@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-        <%@page isELIgnored="false" %>
+    <%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +9,9 @@
 </head>
 <body>
 <div class="form">
-${message}
-	<form action="insertCustomer" class="login" method="post"> 
-	<h1 class="form_title">Add Customer</h1>
+	<form action="insertDealer" class="login" method="post"> 
+	<h1 class="form_title">Dealer Registration form</h1>
+	${message}
 		<div class="form_div"> 
 			<input type="text" class="form_input" name="name" placeholder="" required/>  
 			<label for="" class="form_label">Name</label>
@@ -38,6 +38,6 @@ ${message}
 		</div>
 		<input type="submit" class="form_button" value="Register">
 	</form>
-	</div>
+</div>
 </body>
 </html>

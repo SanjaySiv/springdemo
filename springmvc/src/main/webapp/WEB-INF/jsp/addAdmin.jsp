@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+        <%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,7 @@
 <div class="form">
 	<form action="insertAdmin" class="login" method="post"> 
 	<h1 class="form_title">Add Admin</h1>
+	${message}
 		<div class="form_div"> 
 			<input type="text" class="form_input" name="name" placeholder="" required/>  
 			<label for="" class="form_label">Name</label>

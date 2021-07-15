@@ -123,8 +123,9 @@ html{
 </ul>
 </div>
 <div class=center>
-<form action="confirmBooking">
+<form action="confirmBooking" method="post">
 	Car Id : ${carId}
+	<input hidden="text" name="userId"  value="${userId}"/><br>
 	<input hidden="text" name="carId"  value="${carId}"/><br>
 	Booking Date : <input type="date" class="form_input" name="bookingDate" required/><br>
 	Return Date : <input type="date" class="form_input"name="returningDate" required/><br>

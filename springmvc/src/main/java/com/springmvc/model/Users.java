@@ -1,7 +1,7 @@
 package com.springmvc.model;
 
-public class Customer {
-	private  int customer_id;
+public class Users {
+	private  int userId;
 	private String name;
 	private String address;
 	private String phone;
@@ -9,11 +9,11 @@ public class Customer {
 	private String username;
 	private String password;
 	private String role;
-	public int getCustomer_id() {
-		return customer_id;
+	public int getUserId() {
+		return userId;
 	}
-	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public String getName() {
 		return name;

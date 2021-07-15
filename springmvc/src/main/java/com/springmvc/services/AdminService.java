@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.springmvc.dao.AdminDao;
 import com.springmvc.model.CarDates;
 import com.springmvc.model.Cars;
-import com.springmvc.model.Customer;
+import com.springmvc.model.Users;
 
 @org.springframework.stereotype.Service
 public class AdminService {	
 	@Autowired
 	AdminDao adminDao;
-	public List<Customer> viewCustomers() {
+	public List<Users> viewCustomers() {
 		return adminDao.viewCustomers();
 	}
 	public List<Cars> showCars() {
@@ -28,16 +28,16 @@ public class AdminService {
 	public void addCar(Cars cars) {
 		adminDao.addCar(cars);
 	}
-	public void deleteCustomer(int customer_id) {
-		adminDao.deleteCustomer(customer_id);
+	public void deleteCustomer(int userId) {
+		adminDao.deleteCustomer(userId);
 	}
 	public void updateRent(int carId, int rent) {
 		adminDao.updateRent(carId, rent);
 	}
-	public void insertUser(Customer customer) {
-		adminDao.insertUser(customer);
+	public void insertUser(Users users) {
+		adminDao.insertUser(users);
 	}
-	public List<Customer> viewAdmins() {
+	public List<Users> viewAdmins() {
 		return adminDao.viewAdmins();
 	}
 }

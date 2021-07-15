@@ -13,7 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.springmvc.model.CarDates;
 import com.springmvc.model.Cars;
-import com.springmvc.model.Customer;
+import com.springmvc.model.Users;
 
 public class CustomerDao {
 	private JdbcTemplate jdbcTemplate;
@@ -21,37 +21,37 @@ public class CustomerDao {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-	public Boolean saveUser(final Customer customer){  
-		query="insert into customer (name,address,phone,email,username,password,role)values(?,?,?,?,?,?,?)";  
+	public Boolean saveUser(final Users users){  
+		query="insert into users (name,address,phone,email,username,password,role)values(?,?,?,?,?,?,?)";  
 	    return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){  
 	    @Override  
 	    public Boolean doInPreparedStatement(PreparedStatement preparedStatement)  
 	            throws SQLException, DataAccessException {  
-	        preparedStatement.setString(1,customer.getName());  
-	        preparedStatement.setString(2,customer.getAddress());  
-	        preparedStatement.setString(3,customer.getPhone());  
-	        preparedStatement.setString(4,customer.getEmail());
-	        preparedStatement.setString(5,customer.getUsername());
-	        preparedStatement.setString(6,customer.getPassword());
-	        preparedStatement.setString(7,customer.getRole());
+	        preparedStatement.setString(1,users.getName());  
+	        preparedStatement.setString(2,users.getAddress());  
+	        preparedStatement.setString(3,users.getPhone());  
+	        preparedStatement.setString(4,users.getEmail());
+	        preparedStatement.setString(5,users.getUsername());
+	        preparedStatement.setString(6,users.getPassword());
+	        preparedStatement.setString(7,users.getRole());
 	        return preparedStatement.execute();      
 	    }  
 	    });
 	}
-	public List<Customer> getUser(String username,String password) {
-		query="select * from customer where username='"+username+"' and password='"+password+"'";
-		return jdbcTemplate.query(query,new RowMapper<Customer>(){ 
-	        public Customer mapRow(ResultSet resrultSet, int row) throws SQLException {    
-	        	Customer customer=new Customer();
-	        	customer.setCustomer_id(resrultSet.getInt("customer_id"));
-	        	customer.setName(resrultSet.getString("name"));  
-	        	customer.setAddress(resrultSet.getString("address"));  
-	        	customer.setPhone(resrultSet.getString("phone"));
-	        	customer.setEmail(resrultSet.getString("email"));
-	        	customer.setUsername(resrultSet.getString("username"));
-	        	customer.setPassword(resrultSet.getString("password"));
-	        	customer.setRole(resrultSet.getString("role"));
-	    		return customer;}
+	public List<Users> getUser(String username,String password) {
+		query="select * from users where username='"+username+"' and password='"+password+"'";
+		return jdbcTemplate.query(query,new RowMapper<Users>(){ 
+	        public Users mapRow(ResultSet resrultSet, int row) throws SQLException {    
+	        	Users users=new Users();
+	        	users.setUserId(resrultSet.getInt("userId"));
+	        	users.setName(resrultSet.getString("name"));  
+	        	users.setAddress(resrultSet.getString("address"));  
+	        	users.setPhone(resrultSet.getString("phone"));
+	        	users.setEmail(resrultSet.getString("email"));
+	        	users.setUsername(resrultSet.getString("username"));
+	        	users.setPassword(resrultSet.getString("password"));
+	        	users.setRole(resrultSet.getString("role"));
+	    		return users;}
 	        });    
 	}
 	public List<Cars> viewCars(){ 
@@ -70,7 +70,7 @@ public class CustomerDao {
 	    });    
 	}  
 	public Boolean saveDate(final CarDates date){
-		query="insert into carDates (carId,bookingdate,returnDate,customer_id,rentAmount)values(?,?,?,?,?)";  
+		query="insert into carDates (carId,bookingdate,returnDate,userId,rentAmount)values(?,?,?,?,?)";  
 	    return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){  
 	    @Override  
 	    public Boolean doInPreparedStatement(PreparedStatement preparedStatement)  
@@ -78,7 +78,7 @@ public class CustomerDao {
 	    	preparedStatement.setInt(1,date.getCarId());  
 	    	preparedStatement.setString(2, date.getBookingDate());  
 	    	preparedStatement.setString(3,date.getReturnDate());  
-	    	preparedStatement.setInt(4,date.getCustomer_id());
+	    	preparedStatement.setInt(4,date.getUserId());
 	    	preparedStatement.setInt(5,date.getRentAmount());
 	        return preparedStatement.execute();      
 	    }  
@@ -102,8 +102,8 @@ public class CustomerDao {
 	    String rent =  jdbcTemplate.queryForObject(query, new Object[] { carId }, String.class);
 	    return rent;
 	}
-	public List<CarDates> myBookings(int customer_id) throws ParseException {
-		query="select bookingDate,returndate,rentAmount from carDates where customer_id="+customer_id;
+	public List<CarDates> myBookings(int userId)  {
+		query="select bookingDate,returndate,rentAmount from carDates where userId="+userId;
 		return jdbcTemplate.query(query,new RowMapper<CarDates>(){
 	    	 @Override
 	        public CarDates mapRow(ResultSet resrultSet, int row) throws SQLException {    

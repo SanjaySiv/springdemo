@@ -11,39 +11,29 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
-import com.springmvc.controllers.CustomerController;
 import com.springmvc.dao.CustomerDao;
 import com.springmvc.model.CarDates;
 import com.springmvc.model.Cars;
-import com.springmvc.model.Customer;
+import com.springmvc.model.Users;
 
 public class CustomerService {
 	@Autowired 
 	CustomerDao customerDao;
-	String message;
-	public int getUser(String username,String password) {
-		 List<Customer>customerList=customerDao.getUser(username,password);
-		 if(customerList.isEmpty()) { 
-			 return 0; 
-		}
-		 if(!customerList.isEmpty() && customerList.get(0).getRole().contentEquals("employee")) {
-			 return 1;
-		 }
-		 else {
-			 CustomerController.customer_id = customerList.get(0).getCustomer_id();
-			 return 2; 
-		}
+	public Users getCustomer(String username, String password) {
+		List<Users>customerList=customerDao.getUser(username,password);
+		return customerList.get(0);
 	}
-	public void addCustomer(Customer customer) {
-		customerDao.saveUser(customer);
+	public void addCustomer(Users users) {
+		customerDao.saveUser(users);
 	}
 	public List<Cars> viewCars() {
-		return customerDao.viewCars(); 
+		List<Cars>cars=customerDao.viewCars(); 
+		return cars;
 	}
-	public List<CarDates> myBookings(int customer_id) throws ParseException {
-		return customerDao.myBookings(customer_id);
+	public List<CarDates> myBookings(int userId) {
+		return customerDao.myBookings(userId);
 	}
-	public String confirmBooking(HttpServletRequest request,Model model,int customer_id) throws ParseException {
+	public String confirmBooking(HttpServletRequest request,Model model,int userId) throws ParseException {
 		List<CarDates>carDateList=new ArrayList<CarDates>();
 		String bookingDate=request.getParameter("bookingDate");
 		String returningDate=request.getParameter("returningDate");
@@ -62,9 +52,10 @@ public class CustomerService {
 		carDate.setBookingDate(bookingDate);
 		carDate.setReturnDate(returningDate);
 		carDate.setRentAmount(rentAmount);
-		carDate.setCustomer_id(customer_id);
+		carDate.setUserId(userId);
 		if((bookDate.compareTo(now)<0) || (returnDate.compareTo(bookDate)<0)){
 			model.addAttribute("carId",carId);
+			model.addAttribute("userId",userId);
 			return "bookCar";
 		}
 		else {		
@@ -77,11 +68,11 @@ public class CustomerService {
 			else {
 				int count=0;
 				for(CarDates dates:carDateList) {
-					Date bookDataBase=simpleDateFormat.parse(dates.getBookingDate());
-					Date returnDataBase=simpleDateFormat.parse(dates.getReturnDate());
-					if((bookDate.compareTo(bookDataBase)>=0)&&(bookDate.compareTo(returnDataBase)<=0))
+					Date bookingDateOnDataBase=simpleDateFormat.parse(dates.getBookingDate());
+					Date returnDateOnDataBase=simpleDateFormat.parse(dates.getReturnDate());
+					if((bookDate.compareTo(bookingDateOnDataBase)>=0)&&(bookDate.compareTo(returnDateOnDataBase)<=0))
 						count++;
-					else if((returnDate.compareTo(bookDataBase)>=0)&&(returnDate.compareTo(returnDataBase)<=0))
+					else if((returnDate.compareTo(bookingDateOnDataBase)>=0)&&(returnDate.compareTo(returnDateOnDataBase)<=0))
 						count++;
 				}
 				if(count==0) {
@@ -91,6 +82,7 @@ public class CustomerService {
 				}
 				else {
 					model.addAttribute("carId",carId);
+					model.addAttribute("userId",userId);
 					return "bookCar";
 				}
 			}

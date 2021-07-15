@@ -12,12 +12,14 @@
  
 <div class="center">
 	<div class="form">
-	<p>${message}</p><br>
-      <form action="viewCarList" method="get">
+	<p>${users.name}</p><br>
+      <form action="viewCarList" method="post">
+      <input hidden="text" name="userId" value="${users.userId}"/>
          <input type="submit" class="form_button" value="View Cars"/>
       </form> 
       <br>
       <form action="myBookings">
+      <input hidden="text" name="userId" value="${users.userId}"/>
          <input type="submit" class="form_button" value="MyBookings"/>
       </form> 
       </div>

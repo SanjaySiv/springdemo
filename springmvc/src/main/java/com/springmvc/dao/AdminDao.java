@@ -12,16 +12,16 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.springmvc.model.CarDates;
 import com.springmvc.model.Cars;
-import com.springmvc.model.Customer;
+import com.springmvc.model.Users;
 
 public class AdminDao {
-	String query;
+	
 	JdbcTemplate jdbcTemplate;
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 public List<Cars> showCars(){
-	query="select * from cars";
+	String query="select * from cars";
     return jdbcTemplate.query(query,new RowMapper<Cars>(){
     	 @Override
         public Cars mapRow(ResultSet resrultSet, int row) throws SQLException {    
@@ -32,16 +32,18 @@ public List<Cars> showCars(){
             cars.setRegNo(resrultSet.getString("regNo"));
             cars.setPermit(resrultSet.getString("permit"));
             cars.setRent(resrultSet.getInt("rent"));
+            cars.setLocation(resrultSet.getString("location"));
+            cars.setDealerId(resrultSet.getInt("dealerId"));
             return cars;    
         }    
     });    
 	}    
 public int deleteCar(int carId){    
-	query="delete from cars where carId='"+carId+"'";    
+	String query="delete from cars where carId='"+carId+"'";    
     return jdbcTemplate.update(query);    
 	}  
 public Boolean addCar(final Cars cars){  
-	query="insert into cars(model,seat,regNo,permit,rent) values(?,?,?,?,?)";  
+	String query="insert into cars(model,seat,regNo,permit,rent,location,dealerId) values(?,?,?,?,?,?,?)";  
     return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){  
     @Override  
     public Boolean doInPreparedStatement(PreparedStatement preparedStmt)  
@@ -52,31 +54,33 @@ public Boolean addCar(final Cars cars){
     	preparedStmt.setString(3,cars.getRegNo());
     	preparedStmt.setString(4,cars.getPermit());
     	preparedStmt.setInt(5,cars.getRent());
+    	preparedStmt.setString(5,cars.getLocation());
+    	preparedStmt.setInt(5,cars.getDealerId());
         return preparedStmt.execute();      
     }  
     });
 }
-public List<Customer> viewCustomers(){  
-	query="select customer_id,name,address,phone,email from customer where role='customer'";
-    return jdbcTemplate.query(query,new RowMapper<Customer>(){
+public List<Users> viewCustomers(){  
+	String query="select userId,name,address,phone,email from users where role='customer'";
+    return jdbcTemplate.query(query,new RowMapper<Users>(){
     	 @Override
-        public Customer mapRow(ResultSet resrultSet, int row) throws SQLException {    
-    		 Customer customer=new Customer();    
-    		 customer.setCustomer_id(resrultSet.getInt("customer_id")); 
-    		 customer.setName(resrultSet.getString("name"));    
-    		 customer.setAddress(resrultSet.getString("address"));    
-    		 customer.setPhone(resrultSet.getString("phone"));    
-    		 customer.setEmail(resrultSet.getString("email")); 
-            return customer;    
+        public Users mapRow(ResultSet resrultSet, int row) throws SQLException {    
+    		 Users users=new Users();    
+    		 users.setUserId(resrultSet.getInt("userId")); 
+    		 users.setName(resrultSet.getString("name"));    
+    		 users.setAddress(resrultSet.getString("address"));    
+    		 users.setPhone(resrultSet.getString("phone"));    
+    		 users.setEmail(resrultSet.getString("email")); 
+            return users;    
         }    
     });    
 	}    
-public int deleteCustomer(int customer_id){    
-	query="delete from customer where customer_id='"+customer_id+"'";    
+public int deleteCustomer(int userId){    
+	String query="delete from users where userId='"+userId+"'";    
     return jdbcTemplate.update(query);    
 	} 
 public List<CarDates> viewBookings(){  
-	query="select * from cardates";
+	String query="select * from cardates";
     return jdbcTemplate.query(query,new RowMapper<CarDates>(){
     	 @Override
         public CarDates mapRow(ResultSet resrultSet, int row) throws SQLException {    
@@ -84,45 +88,45 @@ public List<CarDates> viewBookings(){
             carDates.setCarId(resrultSet.getInt("carId"));    
             carDates.setBookingDate(resrultSet.getString("bookingDate"));    
             carDates.setReturnDate(resrultSet.getString("returnDate"));
-            carDates.setCustomer_id(resrultSet.getInt("customer_id"));
+            carDates.setUserId(resrultSet.getInt("userId"));
             carDates.setRentAmount(resrultSet.getInt("rentAmount"));
             return carDates;    
         }    
     });    
 	}    
 public int updateRent(int carId,int rent) {
-	query="update cars set rent="+rent+" where carId="+carId;
+	String query="update cars set rent="+rent+" where carId="+carId;
 	return jdbcTemplate.update(query);
 	}
-public Boolean insertUser(final Customer customer){  
-	query="insert into customer (name,address,phone,email,username,password,role)values(?,?,?,?,?,?,?)";  
+public Boolean insertUser(final Users users){  
+	String query="insert into users (name,address,phone,email,username,password,role)values(?,?,?,?,?,?,?)";  
     return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){  
     @Override  
     public Boolean doInPreparedStatement(PreparedStatement preparedStatement)  
             throws SQLException, DataAccessException {  
-        preparedStatement.setString(1,customer.getName());  
-        preparedStatement.setString(2,customer.getAddress());  
-        preparedStatement.setString(3,customer.getPhone());  
-        preparedStatement.setString(4,customer.getEmail());
-        preparedStatement.setString(5,customer.getUsername());
-        preparedStatement.setString(6,customer.getPassword());
-        preparedStatement.setString(7,customer.getRole());
+        preparedStatement.setString(1,users.getName());  
+        preparedStatement.setString(2,users.getAddress());  
+        preparedStatement.setString(3,users.getPhone());  
+        preparedStatement.setString(4,users.getEmail());
+        preparedStatement.setString(5,users.getUsername());
+        preparedStatement.setString(6,users.getPassword());
+        preparedStatement.setString(7,users.getRole());
         return preparedStatement.execute();      
     }  
     });
 }
-public List<Customer> viewAdmins() {
-	query="select customer_id,name,address,phone,email from customer where role='employee'";
-    return jdbcTemplate.query(query,new RowMapper<Customer>(){
+public List<Users> viewAdmins() {
+	String query="select userId,name,address,phone,email from users where role='employee'";
+    return jdbcTemplate.query(query,new RowMapper<Users>(){
     	 @Override
-        public Customer mapRow(ResultSet resrultSet, int row) throws SQLException {    
-    		 Customer customer=new Customer();    
-    		 customer.setCustomer_id(resrultSet.getInt("customer_id")); 
-    		 customer.setName(resrultSet.getString("name"));    
-    		 customer.setAddress(resrultSet.getString("address"));    
-    		 customer.setPhone(resrultSet.getString("phone"));    
-    		 customer.setEmail(resrultSet.getString("email")); 
-            return customer;    
+        public Users mapRow(ResultSet resrultSet, int row) throws SQLException {    
+    		 Users users=new Users();    
+    		 users.setUserId(resrultSet.getInt("userId")); 
+    		 users.setName(resrultSet.getString("name"));    
+    		 users.setAddress(resrultSet.getString("address"));    
+    		 users.setPhone(resrultSet.getString("phone"));    
+    		 users.setEmail(resrultSet.getString("email")); 
+            return users;    
         }    
     });  
 	}

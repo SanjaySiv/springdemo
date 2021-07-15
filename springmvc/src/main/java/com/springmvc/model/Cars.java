@@ -7,6 +7,8 @@ public class Cars {
 	private String regNo;
 	private String permit;
 	private int rent;
+	private String location;
+	private int dealerId;
 	public int getRent() {
 		return rent;
 	}
@@ -43,5 +45,16 @@ public class Cars {
 	public void setPermit(String permit) {
 		this.permit = permit;
 	}
-	
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public int getDealerId() {
+		return dealerId;
+	}
+	public void setDealerId(int dealerId) {
+		this.dealerId = dealerId;
+	}
 }

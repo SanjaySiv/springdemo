@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+        <%@page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 </head>
 <body>
 <div class="center">
+${message}
 <h1>Add Car</h1>
 <form action="insertCar" method="post"> 
 <div class="txt-field"> 
@@ -34,6 +36,16 @@
 <input type="text" name="rent" required/> 
 <span></span>
 <label> Rent/Day </label>
+</div>
+<div class="txt-field"> 
+<input type="text" name="location" required/> 
+<span></span>
+<label> Location </label>
+</div>
+ <div class="txt-field"> 
+<input type="text" name="dealerId" required/> 
+<span></span>
+<label> Dealer Id </label>
 </div>
 <input type="submit" value="Add">
 </form>

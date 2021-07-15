@@ -38,6 +38,10 @@
 <bean id="adminDao" class="com.springmvc.dao.AdminDao">  
 <property name="jdbcTemplate" ref="jdbcTemplate"></property>  
 </bean>
+<bean id="dealerDao" class="com.springmvc.dao.DealerDao">  
+<property name="jdbcTemplate" ref="jdbcTemplate"></property>  
+</bean>
 <bean id="adminService" class="com.springmvc.services.AdminService"/> 
 <bean id="customerService" class="com.springmvc.services.CustomerService"/>
+<bean id="dealerService" class="com.springmvc.services.DealerService"/>
 </beans> 

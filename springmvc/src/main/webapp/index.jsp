@@ -20,15 +20,18 @@
 			<label for="" class="form_label"> Password </label>
 		</div>
 		<input type="submit" class="form_button" value="Sign In">
-		<div class="signup_link">
-		Not a member?<a href="register.jsp" class="register">Register</a>
-		</div>
+	</form>
+	<form action="customerRegister">
+		<input type="submit" class="form_button" value="Sign Up">
 	</form>
 </div>
 <div class="covid">
 	<form action="covid">
 	<input type="submit" class="form_button" value="Covid Report India">
-</form>
+</form><br><br>
+<form action="dealerRegister">
+		<input type="submit" class="form_button" value="Register as Dealer">
+	</form>
 </div>
 </div>
 <jsp:include page="/WEB-INF/jsp/details.jsp"></jsp:include>

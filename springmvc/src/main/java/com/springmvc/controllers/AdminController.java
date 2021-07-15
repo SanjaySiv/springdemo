@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.springmvc.model.CarDates;
 import com.springmvc.model.Cars;
-import com.springmvc.model.Customer;
+import com.springmvc.model.Users;
 import com.springmvc.services.AdminService;
 
 @Controller
@@ -37,43 +38,57 @@ public class AdminController {
 		return "cars";
 	}
 	@RequestMapping(value="/insertCar",method = RequestMethod.POST)
-	public String addCar(HttpServletRequest request) {
+	public String addCar(HttpServletRequest request,Model model) {
 		Cars car=new Cars();
 		car.setModel(request.getParameter("model"));
 		car.setSeat(Integer.parseInt(request.getParameter("seat")));
 		car.setRegNo(request.getParameter("regNo"));
 		car.setPermit(request.getParameter("permit"));
 		car.setRent(Integer.parseInt(request.getParameter("rent")));
+		car.setLocation(request.getParameter("location"));
+		car.setDealerId(Integer.parseInt(request.getParameter("dealerId")));
+		try {
 		adminService.addCar(car);
 		return "redirect:/viewCars";
+		}
+		catch(DuplicateKeyException e) {
+			model.addAttribute("message","Car already exist");
+			return "cars";
+		}
 	}
 	@RequestMapping("/viewCustomers")
 	public String viewCustomers(Model model) {
-		List<Customer>customerList=adminService.viewCustomers(); 
+		List<Users>customerList=adminService.viewCustomers(); 
 		model.addAttribute("customerList",customerList);
 		return "editCustomer";
 	}
-	@RequestMapping(value="/deleteCustomer/{customer_id}",method = RequestMethod.GET)
-	 public String deleteCustomer(@PathVariable int customer_id){    
-		adminService.deleteCustomer(customer_id);    
+	@RequestMapping(value="/deleteCustomer/{userId}",method = RequestMethod.GET)
+	 public String deleteCustomer(@PathVariable int userId){    
+		adminService.deleteCustomer(userId);    
        return "redirect:/viewCustomers";    
     } 
 	@RequestMapping(value="/addCustomer")
 	public String addCustomer() {
 		return "addCustomer";
 	}
-	@RequestMapping(value="/insertCustomer")
-	public String insertCustomer(HttpServletRequest request) {
-		Customer customer=new Customer();
-		customer.setName(request.getParameter("name"));
-		customer.setAddress(request.getParameter("address"));
-		customer.setPhone(request.getParameter("phone"));
-		customer.setEmail(request.getParameter("email"));
-		customer.setUsername(request.getParameter("username"));
-		customer.setPassword(request.getParameter("password"));
-		customer.setRole("customer");
-		adminService.insertUser(customer);
+	@RequestMapping(value="/insertCustomer",method = RequestMethod.POST)
+	public String insertCustomer(HttpServletRequest request,Model model) {
+		Users users=new Users();
+		users.setName(request.getParameter("name"));
+		users.setAddress(request.getParameter("address"));
+		users.setPhone(request.getParameter("phone"));
+		users.setEmail(request.getParameter("email"));
+		users.setUsername(request.getParameter("username"));
+		users.setPassword(request.getParameter("password"));
+		users.setRole("customer");
+		try {
+		adminService.insertUser(users);
 		return "redirect:/viewCustomers";
+		}
+		catch(DuplicateKeyException e) {
+			model.addAttribute("message","user already exist");
+			return "addCustomer";
+		}
 	}
 	@RequestMapping("/viewBookings")
 	public String viewBookings(Model model) {
@@ -89,7 +104,7 @@ public class AdminController {
     } 
 	@RequestMapping(value="/viewAdmins")
 	public String viewAdmins(Model model) {
-		List<Customer>adminList=adminService.viewAdmins();
+		List<Users>adminList=adminService.viewAdmins();
 		model.addAttribute("adminList",adminList);
 		return "viewAdmins";
 	}
@@ -97,22 +112,28 @@ public class AdminController {
 	public String addAdmin() {
 		return "addAdmin";
 	}
-	@RequestMapping(value="/insertAdmin")
-	public String insertAdmin(HttpServletRequest request) {
-		Customer customer=new Customer();
-		customer.setName(request.getParameter("name"));
-		customer.setAddress(request.getParameter("address"));
-		customer.setPhone(request.getParameter("phone"));
-		customer.setEmail(request.getParameter("email"));
-		customer.setUsername(request.getParameter("username"));
-		customer.setPassword(request.getParameter("password"));
-		customer.setRole("employee");
-		adminService.insertUser(customer);
+	@RequestMapping(value="/insertAdmin",method = RequestMethod.POST)
+	public String insertAdmin(HttpServletRequest request,Model model) {
+		Users users=new Users();
+		users.setName(request.getParameter("name"));
+		users.setAddress(request.getParameter("address"));
+		users.setPhone(request.getParameter("phone"));
+		users.setEmail(request.getParameter("email"));
+		users.setUsername(request.getParameter("username"));
+		users.setPassword(request.getParameter("password"));
+		users.setRole("employee");
+		try {
+		adminService.insertUser(users);
 		return "redirect:/viewAdmins";
+		}
+		catch(DuplicateKeyException e) {
+			model.addAttribute("message","user already exist");
+			return "addAdmin";
+		}
 	}
-	@RequestMapping(value="/deleteAdmin/{customer_id}",method = RequestMethod.GET)
-	 public String deleteAdmin(@PathVariable int customer_id){    
-		adminService.deleteCustomer(customer_id);    
+	@RequestMapping(value="/deleteAdmin/{userId}",method = RequestMethod.GET)
+	 public String deleteAdmin(@PathVariable int userId){    
+		adminService.deleteCustomer(userId);    
       return "redirect:/viewAdmins";    
    } 
 }

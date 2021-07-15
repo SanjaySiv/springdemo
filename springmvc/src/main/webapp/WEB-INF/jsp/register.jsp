@@ -12,7 +12,8 @@
 <jsp:include page="/WEB-INF/jsp/indRegNav.jsp"></jsp:include>
 <div class="banner-area" id="home">
 <div class="form">
-	<form action="save" class="login" > 
+${message}
+	<form action="save" class="login" method="post"> 
 	<h1 class="form_title">Register</h1>
 		<div class="form_div"> 
 			<input type="text" class="form_input" name="name" placeholder="" required/>  
