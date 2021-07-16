@@ -22,6 +22,10 @@
          <input type="submit" value="View Bookings"/>
       </form> 
       <br>
+      <form action="viewDealers">
+         <input type="submit" value="View Dealers"/>
+      </form> 
+      <br>
       <form action="viewAdmins">
          <input type="submit" value="View Admins"/>
       </form>

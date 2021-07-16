@@ -95,4 +95,12 @@ public class CustomerController {
 		model.addAttribute("bookings", bookings);
 		return "myBookings";
 	}
+	@RequestMapping("/location")
+	public String selectLocation(HttpServletRequest request,Model model) {
+		List<Cars>locationList=customerService.selectLocation();
+		int userId=Integer.parseInt(request.getParameter("userId"));
+		model.addAttribute("locationList",locationList);
+		model.addAttribute("userId",userId);
+		return "selectLocation";
+	}
 }

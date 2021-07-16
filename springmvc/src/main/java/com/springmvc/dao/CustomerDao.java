@@ -115,4 +115,15 @@ public class CustomerDao {
 	        }    
 	    });   
 	}
+	public List<Cars> selectLocation() {
+		query="select distinct location from cars";
+	    return jdbcTemplate.query(query,new RowMapper<Cars>(){
+	    	 @Override
+	        public Cars mapRow(ResultSet resrultSet, int row) throws SQLException {    
+	            Cars cars=new Cars();    
+	            cars.setLocation(resrultSet.getString("location"));    
+	            return cars;    
+	        }    
+	    });  
+	}
 }

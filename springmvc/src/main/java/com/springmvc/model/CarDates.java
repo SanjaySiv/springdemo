@@ -6,6 +6,7 @@ public class CarDates {
 	private String returnDate;
 	private int userId;
 	private int rentAmount;
+	private int dealerId;
 	public int getRentAmount() {
 		return rentAmount;
 	}
@@ -35,5 +36,11 @@ public class CarDates {
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+	public int getDealerId() {
+		return dealerId;
+	}
+	public void setDealerId(int dealerId) {
+		this.dealerId = dealerId;
 	}
 }

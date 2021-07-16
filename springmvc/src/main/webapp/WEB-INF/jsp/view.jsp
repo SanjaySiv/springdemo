@@ -13,9 +13,9 @@
 <div class="center">
 	<div class="form">
 	<p>${users.name}</p><br>
-      <form action="viewCarList" method="post">
+      <form action="location" method="post">
       <input hidden="text" name="userId" value="${users.userId}"/>
-         <input type="submit" class="form_button" value="View Cars"/>
+         <input type="submit" class="form_button" value="Select Location"/>
       </form> 
       <br>
       <form action="myBookings">

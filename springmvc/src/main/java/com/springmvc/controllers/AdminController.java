@@ -132,8 +132,47 @@ public class AdminController {
 		}
 	}
 	@RequestMapping(value="/deleteAdmin/{userId}",method = RequestMethod.GET)
-	 public String deleteAdmin(@PathVariable int userId){    
+	 public String deleteDealer(@PathVariable int userId){    
 		adminService.deleteCustomer(userId);    
-      return "redirect:/viewAdmins";    
+      return "redirect:/viewAdmin";    
    } 
+	
+	
+	
+	
+	@RequestMapping(value="/viewDealers")
+	public String viewDealers(Model model) {
+		List<Users>dealerList=adminService.viewDealers();
+		model.addAttribute("dealerList",dealerList);
+		return "viewDealers";
+	}
+	@RequestMapping(value="/addDealer")
+	public String addDealer() {
+		return "addDealer";
+	}
+	@RequestMapping(value="/insertDealers",method = RequestMethod.POST)
+	public String insertDealer(HttpServletRequest request,Model model) {
+		Users users=new Users();
+		try {
+		users.setName(request.getParameter("name"));
+		users.setAddress(request.getParameter("address"));
+		users.setPhone(request.getParameter("phone"));
+		users.setEmail(request.getParameter("email"));
+		users.setUsername(request.getParameter("username"));
+		users.setPassword(request.getParameter("password"));
+		users.setRole("dealer");
+		adminService.insertDealer(users);
+		return "redirect:/viewDealers";
+		}
+		catch(DuplicateKeyException e) {
+			model.addAttribute("message","user already exist");
+			return "addAdmin";
+		}
+	}
+	@RequestMapping(value="/deleteDealer/{userId}",method = RequestMethod.GET)
+	 public String deleteAdmin(@PathVariable int userId){    
+		adminService.deleteDealer(userId);    
+      return "redirect:/viewDealers";    
+   } 
+	
 }

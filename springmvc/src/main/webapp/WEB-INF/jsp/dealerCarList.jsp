@@ -21,18 +21,20 @@
    <td><c:out value="${cars.rent}"/></td>
    <td><c:out value="${cars.location}"/></td>
    <td>
-   <form action="changeRent/${cars.carId}">
+   <form action="dealerChangeRent/${cars.carId}">
+   <input hidden="text" name="dealerId"  value="${dealerId}"/>
    <input type="text" name="rent" size="5" required/>
    <input type="submit" value="Change"/>
    </form>
    </td>
-   <td><a href="deleteCar/${cars.carId}">Delete</a></td>    
+   <td><a href="dealerDeleteCar/${cars.carId}/${dealerId}">Delete</a></td>    
    </tr>  
    </c:forEach>  
    </table>  
    <br/>  
    <br>
-      <form action="addCar">
+      <form action="dealerAddCar" method="post">
+      <input hidden="text" name="dealerId"  value="${dealerId}"/>
          <input type="submit" value="Add Car"/>
       </form>
 </body>

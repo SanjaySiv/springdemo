@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.jdbc.core.RowMapper;
 
+import com.springmvc.model.CarDates;
 import com.springmvc.model.Cars;
 import com.springmvc.model.Users;
 
@@ -52,5 +53,46 @@ public class DealerDao {
 	        }    
 	    });    
 	}
-
+	public int deleteCar(int carId){    
+		String query="delete from cars where carId='"+carId+"'";    
+	    return jdbcTemplate.update(query);    
+		}
+	public Boolean dealerAddCar(Cars cars) {
+		String query="insert into cars(model,seat,regNo,permit,rent,location,dealerId) values(?,?,?,?,?,?,?)";  
+	    return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){  
+	    @Override  
+	    public Boolean doInPreparedStatement(PreparedStatement preparedStmt)  
+	            throws SQLException, DataAccessException {  
+	              
+	    	preparedStmt.setString(1,cars.getModel());    
+	    	preparedStmt.setInt(2,cars.getSeat());  
+	    	preparedStmt.setString(3,cars.getRegNo());
+	    	preparedStmt.setString(4,cars.getPermit());
+	    	preparedStmt.setInt(5,cars.getRent());
+	    	preparedStmt.setString(6,cars.getLocation());
+	    	preparedStmt.setInt(7,cars.getDealerId());
+	        return preparedStmt.execute();      
+	    }  
+	    });
+	}
+	public int dealerUpdateRent(int carId, int rent) {
+		String query="update cars set rent="+rent+" where carId="+carId;
+		return jdbcTemplate.update(query);
+	}
+	public List<CarDates> viewDealerCustomers(int dealerId) {
+		String query="select * from cardates where dealerId="+dealerId;
+	    return jdbcTemplate.query(query,new RowMapper<CarDates>(){
+	    	 @Override
+	        public CarDates mapRow(ResultSet resrultSet, int row) throws SQLException {    
+	    		 CarDates carDates=new CarDates();    
+	            carDates.setCarId(resrultSet.getInt("carId"));    
+	            carDates.setBookingDate(resrultSet.getString("bookingDate"));    
+	            carDates.setReturnDate(resrultSet.getString("returnDate"));
+	            carDates.setUserId(resrultSet.getInt("userId"));
+	            carDates.setRentAmount(resrultSet.getInt("rentAmount"));
+	            carDates.setDealerId(resrultSet.getInt("dealerId"));
+	            return carDates;    
+	        }    
+	    });    
+	}  
 }

@@ -40,4 +40,17 @@ public class AdminService {
 	public List<Users> viewAdmins() {
 		return adminDao.viewAdmins();
 	}
+	
+	
+	
+	
+	public List<Users> viewDealers() {
+		return adminDao.viewdealers();
+	}
+	public void insertDealer(Users users) {
+		adminDao.insertDealer(users);
+	}
+	public void deleteDealer(int userId) {
+		adminDao.deleteDealer(userId);
+	}
 }

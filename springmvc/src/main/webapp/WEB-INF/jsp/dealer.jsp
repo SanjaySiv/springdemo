@@ -14,8 +14,8 @@
          <input type="submit" value="View Cars"/>
       </form> 
       <br>
-      <form action="viewCustomers">
-      <input hidden="text" name="userId"  value="${users.userId}"/>
+      <form action="viewDealerCustomers">
+      <input hidden="text" name="dealerId"  value="${users.userId}"/>
          <input type="submit" value="View Customers"/>
       </form> 
       <br>

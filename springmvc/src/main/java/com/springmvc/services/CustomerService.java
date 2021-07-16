@@ -88,4 +88,7 @@ public class CustomerService {
 			}
 		}
 	}
+	public List<Cars> selectLocation() {
+		return customerDao.selectLocation();
+	}
 }
