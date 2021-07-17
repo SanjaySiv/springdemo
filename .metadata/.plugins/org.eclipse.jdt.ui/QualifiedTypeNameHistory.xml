@@ -21,7 +21,6 @@
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.time.Duration"/>
-    <fullyQualifiedTypeName name="com.springmvc.model.CarDates"/>
     <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
@@ -53,5 +52,6 @@
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.springmvc.dao.DealersDao"/>
     <fullyQualifiedTypeName name="java.awt.List"/>
+    <fullyQualifiedTypeName name="com.springmvc.model.CarDates"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
 </qualifiedTypeNameHistroy>

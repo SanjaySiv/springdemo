@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ page isELIgnored="false"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>  
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="eng" dir="ltr">
 <head>
@@ -84,6 +84,13 @@ th{
    </tr>
   </table>
  </div>
-You have successfully booked your car. <a href="view.jsp" >back to home</a>
+ You have successfully booked your car.<br>
+ For any query please contact the dealer<br><br>
+ <c:forEach var="users" items="${dealerDetails}">
+ Email : <c:out value="${users.email}"/><br>
+ Phone : <c:out value="${users.phone}"/><br>
+ </c:forEach>  
+ <br><br>
+ <a href="view.jsp" >back to home</a>
 </body>
 </html>

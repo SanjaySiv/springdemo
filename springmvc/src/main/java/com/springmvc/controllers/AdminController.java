@@ -134,7 +134,7 @@ public class AdminController {
 	@RequestMapping(value="/deleteAdmin/{userId}",method = RequestMethod.GET)
 	 public String deleteDealer(@PathVariable int userId){    
 		adminService.deleteCustomer(userId);    
-      return "redirect:/viewAdmin";    
+      return "redirect:/viewAdmins";    
    } 
 	
 	

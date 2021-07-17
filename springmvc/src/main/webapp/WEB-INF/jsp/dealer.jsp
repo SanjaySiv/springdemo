@@ -16,7 +16,7 @@
       <br>
       <form action="viewDealerCustomers">
       <input hidden="text" name="dealerId"  value="${users.userId}"/>
-         <input type="submit" value="View Customers"/>
+         <input type="submit" value="View Booked Customers"/>
       </form> 
       <br>
 </div>

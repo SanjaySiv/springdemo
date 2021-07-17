@@ -11,7 +11,7 @@
 <body>
 <h1>Booking List</h1>  
 <table border="2" width="70%" cellpadding="2">  
-<tr><th>Car Id</th><th>Booking Date</th><th>Return Date</th><th>Customer ID</th><th>Rent</th></tr>  
+<tr><th>Car Id</th><th>Booking Date</th><th>Return Date</th><th>Customer ID</th><th>Rent</th><th>Dealer Id</th></tr>  
    <c:forEach var="carDates" items="${bookingList}">   
    <tr>  
    <td><c:out value="${carDates.carId}"/></td>  

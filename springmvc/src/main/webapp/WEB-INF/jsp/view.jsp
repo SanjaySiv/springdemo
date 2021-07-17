@@ -21,7 +21,7 @@
       <form action="myBookings">
       <input hidden="text" name="userId" value="${users.userId}"/>
          <input type="submit" class="form_button" value="MyBookings"/>
-      </form> 
+      </form>    
       </div>
       <div class="images">
       	<img class="mySlides" src="../resources/images/car1.jpg" style="width:100%">

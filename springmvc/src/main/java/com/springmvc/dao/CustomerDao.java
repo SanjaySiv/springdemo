@@ -54,8 +54,8 @@ public class CustomerDao {
 	    		return users;}
 	        });    
 	}
-	public List<Cars> viewCars(){ 
-		query="select * from cars";
+	public List<Cars> viewCars(String location){ 
+		query="select * from cars where location='"+location+"'";
 	    return jdbcTemplate.query(query,new RowMapper<Cars>(){
 	    	 @Override
 	        public Cars mapRow(ResultSet resrultSet, int row) throws SQLException {    
@@ -70,7 +70,7 @@ public class CustomerDao {
 	    });    
 	}  
 	public Boolean saveDate(final CarDates date){
-		query="insert into carDates (carId,bookingdate,returnDate,userId,rentAmount)values(?,?,?,?,?)";  
+		query="insert into carDates (carId,bookingdate,returnDate,userId,rentAmount,dealerId)values(?,?,?,?,?,?)";  
 	    return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){  
 	    @Override  
 	    public Boolean doInPreparedStatement(PreparedStatement preparedStatement)  
@@ -80,6 +80,7 @@ public class CustomerDao {
 	    	preparedStatement.setString(3,date.getReturnDate());  
 	    	preparedStatement.setInt(4,date.getUserId());
 	    	preparedStatement.setInt(5,date.getRentAmount());
+	    	preparedStatement.setInt(6,date.getDealerId());
 	        return preparedStatement.execute();      
 	    }  
 	    });
@@ -125,5 +126,21 @@ public class CustomerDao {
 	            return cars;    
 	        }    
 	    });  
+	}
+	public String getDealerId(int carId) {
+		query = "select dealerId from cars  where carId=?";
+	    String dealerId =  jdbcTemplate.queryForObject(query, new Object[] { carId }, String.class);
+	    return dealerId;
+	}
+	public List<Users> dealerDetails(int dealerId) {
+		query="select email,phone from users where userId="+dealerId;
+		return jdbcTemplate.query(query,new RowMapper<Users>(){ 
+	        public Users mapRow(ResultSet resrultSet, int row) throws SQLException {    
+	        	Users users=new Users();  
+	        	users.setPhone(resrultSet.getString("phone"));
+	        	users.setEmail(resrultSet.getString("email"));
+	    		return users;
+	    		}
+	        }); 
 	}
 }

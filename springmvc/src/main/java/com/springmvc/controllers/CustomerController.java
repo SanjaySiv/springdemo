@@ -43,7 +43,8 @@ public class CustomerController {
     }
 	@RequestMapping(value="/viewCarList",method = RequestMethod.POST) 
 	public String viewCars(Model model,HttpServletRequest request) {
-		List<Cars>carList=customerService.viewCars();
+		String location=request.getParameter("location");
+		List<Cars>carList=customerService.viewCars(location);
 		String UserId=request.getParameter("userId");
 		model.addAttribute("userId",UserId);
 		model.addAttribute("carList",carList);

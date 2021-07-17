@@ -40,10 +40,6 @@ public class AdminService {
 	public List<Users> viewAdmins() {
 		return adminDao.viewAdmins();
 	}
-	
-	
-	
-	
 	public List<Users> viewDealers() {
 		return adminDao.viewdealers();
 	}

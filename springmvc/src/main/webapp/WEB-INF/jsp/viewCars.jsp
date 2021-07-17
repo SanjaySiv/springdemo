@@ -13,7 +13,6 @@
 <jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
 <div class="center">
 <h1>Cars List</h1><br> 
- 
 <table border="2" width="70%" cellpadding="2">  
 <tr><th>Car Id</th><th>Model</th><th>Seat No.</th><th>Permit</th><th>Rent/Day</th><th></th></tr>  
    <c:forEach var="cars" items="${carList}">   

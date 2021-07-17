@@ -26,8 +26,8 @@ public class CustomerService {
 	public void addCustomer(Users users) {
 		customerDao.saveUser(users);
 	}
-	public List<Cars> viewCars() {
-		List<Cars>cars=customerDao.viewCars(); 
+	public List<Cars> viewCars(String location) {
+		List<Cars>cars=customerDao.viewCars(location); 
 		return cars;
 	}
 	public List<CarDates> myBookings(int userId) {
@@ -53,6 +53,9 @@ public class CustomerService {
 		carDate.setReturnDate(returningDate);
 		carDate.setRentAmount(rentAmount);
 		carDate.setUserId(userId);
+		int dealerId=Integer.parseInt(customerDao.getDealerId(carId));
+		carDate.setDealerId(dealerId);
+		
 		if((bookDate.compareTo(now)<0) || (returnDate.compareTo(bookDate)<0)){
 			model.addAttribute("carId",carId);
 			model.addAttribute("userId",userId);
@@ -62,7 +65,9 @@ public class CustomerService {
 			carDateList=customerDao.checkDate(carId);
 			if(carDateList.isEmpty()) {
 				customerDao.saveDate(carDate);
+				List<Users>dealerDetails=customerDao.dealerDetails(dealerId);
 				model.addAttribute("details",carDate);
+				model.addAttribute("dealerDetails",dealerDetails);
 				return "booked";
 			}
 			else {
@@ -77,7 +82,9 @@ public class CustomerService {
 				}
 				if(count==0) {
 					customerDao.saveDate(carDate);
+					List<Users>dealerDetails=customerDao.dealerDetails(dealerId);
 					model.addAttribute("details",carDate);
+					model.addAttribute("dealerDetails",dealerDetails);
 					return "booked";
 				}
 				else {

@@ -89,6 +89,7 @@ public List<CarDates> viewBookings(){
             carDates.setReturnDate(resrultSet.getString("returnDate"));
             carDates.setUserId(resrultSet.getInt("userId"));
             carDates.setRentAmount(resrultSet.getInt("rentAmount"));
+            carDates.setDealerId(resrultSet.getInt("dealerId"));
             return carDates;    
         }    
     });    

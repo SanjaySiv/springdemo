@@ -18,7 +18,6 @@
    <td><c:out value="${carDates.returnDate}"/></td>  
    <td><c:out value="${carDates.userId}"/></td> 
    <td><c:out value="${carDates.rentAmount}"/></td> 
-   <td><c:out value="${carDates.dealerId}"/></td>
    </tr>  
    </c:forEach>  
 </table> 
