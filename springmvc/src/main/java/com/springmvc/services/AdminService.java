@@ -2,8 +2,6 @@ package com.springmvc.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.springmvc.dao.AdminDao;
 import com.springmvc.model.CarDates;
 import com.springmvc.model.Cars;
@@ -11,8 +9,11 @@ import com.springmvc.model.Users;
 
 @org.springframework.stereotype.Service
 public class AdminService {	
-	@Autowired
 	AdminDao adminDao;
+	public AdminService(AdminDao adminDao) {
+		super();
+		this.adminDao = adminDao;
+	}
 	public List<Users> viewCustomers() {
 		return adminDao.viewCustomers();
 	}

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +18,13 @@ import com.springmvc.services.DealerService;
 
 @Controller
 public class DealerController {
-	@Autowired
+
 	DealerService dealerService;
+	
+	public DealerController(DealerService dealerService) {
+		super();
+		this.dealerService = dealerService;
+	}
 	@RequestMapping("/dealerRegister")
 	public String dealerRegister() {
 		return "dealerRegistration";

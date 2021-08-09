@@ -2,17 +2,17 @@ package com.springmvc.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.springmvc.dao.DealerDao;
 import com.springmvc.model.CarDates;
 import com.springmvc.model.Cars;
 import com.springmvc.model.Users;
 
 public class DealerService {
-	
-	@Autowired
 	DealerDao dealerDao;
+	public DealerService(DealerDao dealerDao) {
+		super();
+		this.dealerDao = dealerDao;
+	}
 	public void insertDealer(Users dealer) {
 		dealerDao.insertDealer(dealer);
 	}

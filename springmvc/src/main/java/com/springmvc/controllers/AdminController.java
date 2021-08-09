@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +18,13 @@ import com.springmvc.services.AdminService;
 
 @Controller
 public class AdminController {
-	@Autowired
+	
 	AdminService adminService;
 	
+	public AdminController(AdminService adminService) {
+		super();
+		this.adminService = adminService;
+	}
 	@RequestMapping(value="/viewCars") 
 	public String editCars(Model model) {
 		List<Cars>carList=adminService.showCars(); 
@@ -40,6 +43,7 @@ public class AdminController {
 	@RequestMapping(value="/insertCar",method = RequestMethod.POST)
 	public String addCar(HttpServletRequest request,Model model) {
 		Cars car=new Cars();
+		try {
 		car.setModel(request.getParameter("model"));
 		car.setSeat(Integer.parseInt(request.getParameter("seat")));
 		car.setRegNo(request.getParameter("regNo"));
@@ -47,7 +51,6 @@ public class AdminController {
 		car.setRent(Integer.parseInt(request.getParameter("rent")));
 		car.setLocation(request.getParameter("location"));
 		car.setDealerId(Integer.parseInt(request.getParameter("dealerId")));
-		try {
 		adminService.addCar(car);
 		return "redirect:/viewCars";
 		}

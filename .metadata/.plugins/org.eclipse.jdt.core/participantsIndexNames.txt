@@ -25,5 +25,7 @@ E:\Eclipse2019wrokspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\71
 \firstSpringApplication\src\main\resources
 E:\Eclipse2019wrokspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2317416336.index
 \firstSpringApplication\src\main\resources
+E:\Eclipse2019wrokspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1386043074.index
+\springSamples\src\main\resources
 E:\Eclipse2019wrokspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1673543665.index
 \springsample\src\main\resources

@@ -3,8 +3,6 @@ import java.text.ParseException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,8 +15,13 @@ import com.springmvc.model.Users;
 import com.springmvc.services.CustomerService;
 @Controller
 public class CustomerController {
-	@Autowired
+
 	CustomerService customerService;
+	
+	public CustomerController(CustomerService customerService) {
+		super();
+		this.customerService = customerService;
+	}
 	@RequestMapping(value="/login",method = RequestMethod.POST)  
     public String getUser(HttpServletRequest request,Model model) { 
 		String message = null;
@@ -57,6 +60,7 @@ public class CustomerController {
 	@RequestMapping(value="/save",method = RequestMethod.POST)
 	public String addCustomer(HttpServletRequest request,Model model) {
 		Users users=new Users();
+		try {
 		users.setName(request.getParameter("name"));
 		users.setAddress(request.getParameter("address"));
 		users.setPhone(request.getParameter("phone"));
@@ -64,11 +68,10 @@ public class CustomerController {
 		users.setUsername(request.getParameter("username"));
 		users.setPassword(request.getParameter("password"));
 		users.setRole("customer");
-		try {
 		customerService.addCustomer(users);
 		return "success";
 		}
-		catch(DuplicateKeyException e){
+		catch(Exception e){
 			model.addAttribute("message","user already exist");
 			return "register";
 		}

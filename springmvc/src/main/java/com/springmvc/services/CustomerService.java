@@ -8,7 +8,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 import com.springmvc.dao.CustomerDao;
@@ -16,9 +15,12 @@ import com.springmvc.model.CarDates;
 import com.springmvc.model.Cars;
 import com.springmvc.model.Users;
 
-public class CustomerService {
-	@Autowired 
+public class CustomerService { 
 	CustomerDao customerDao;
+	public CustomerService(CustomerDao customerDao) {
+		super();
+		this.customerDao = customerDao;
+	}
 	public Users getCustomer(String username, String password) {
 		List<Users>customerList=customerDao.getUser(username,password);
 		return customerList.get(0);

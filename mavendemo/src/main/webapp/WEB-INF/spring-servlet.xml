@@ -16,4 +16,16 @@
         <property name="prefix" value="/WEB-INF/jsp/"></property>  
         <property name="suffix" value=".jsp"></property>          
      </bean>  
+     
+<bean class="com.javatpoint.Address" id="a1">
+<constructor-arg value="ghaziabad"/>
+<constructor-arg value="UP"/>
+<constructor-arg value="India"/>
+</bean>
+<bean class="com.javatpoint.Employee" id="e">
+<constructor-arg value="12" type="int"/>
+<constructor-arg value="Sonoo"/>
+<constructor-arg><ref bean="a1"/>
+</constructor-arg>
+</bean>
 </beans>     

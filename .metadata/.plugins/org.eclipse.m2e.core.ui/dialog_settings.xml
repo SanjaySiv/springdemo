@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="E:\Eclipse2019wrokspace\springSample"/>
 			<item value="E:\Eclipse2019wrokspace\springmvc"/>
 			<item value="E:\Eclipse2019wrokspace\firstSpringApplication"/>
 			<item value="E:\Eclipse2019wrokspace\springsample"/>
@@ -29,6 +30,7 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.mvc.demo.springSamples"/>
 			<item value="com.mvc.demo.jdbcspring"/>
 			<item value="com.mvc.demo.springmvc"/>
 			<item value="com.dempspring.mavendemo"/>
@@ -44,6 +46,7 @@
 			<item value="com.demo"/>
 		</list>
 		<list key="artifactId">
+			<item value="springSamples"/>
 			<item value="jdbcspring"/>
 			<item value="springmvc"/>
 			<item value="mavendemo"/>
